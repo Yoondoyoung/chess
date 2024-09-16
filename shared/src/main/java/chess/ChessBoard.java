@@ -9,7 +9,7 @@ import java.util.Arrays;
  * signature of the existing methods.
  */
 public class ChessBoard {
-    ChessPiece[][] board;
+    public ChessPiece[][] board;
 
     public ChessBoard() {
         board = new ChessPiece[8][8];
@@ -22,7 +22,7 @@ public class ChessBoard {
      * @param piece    the piece to add
      */
     public void addPiece(ChessPosition position, ChessPiece piece) {
-        this.board[position.getRow()-1][position.getColumn()-1] = piece;
+        this.board[position.getRow()][position.getColumn()] = piece;
     }
 
     /**

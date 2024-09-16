@@ -5,15 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40362976-303f-48a0-9bb7-bd43d5c088bd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/shared/chess/ChessBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shared/chess/ChessBoard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/shared/chess/ChessGame$TeamColor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shared/chess/ChessGame$TeamColor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/shared/chess/ChessGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shared/chess/ChessGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/shared/chess/ChessMove.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shared/chess/ChessMove.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/shared/chess/ChessPiece$PieceType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shared/chess/ChessPiece$PieceType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/shared/chess/ChessPiece.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shared/chess/ChessPiece.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/shared/chess/ChessPosition.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shared/chess/ChessPosition.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/shared/passoff/chess/ChessMoveTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/shared/passoff/chess/ChessMoveTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/shared/passoff/chess/ChessPositionTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/shared/passoff/chess/ChessPositionTests.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shared/src/main/java/chess/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/chess/ChessBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/chess/ChessGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/chess/ChessGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/chess/ChessMove.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/chess/ChessMove.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shared/src/main/java/chess/ChessPiece.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/chess/ChessPiece.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/chess/ChessPosition.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/chess/ChessPosition.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +46,7 @@
     &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;JUnit.BishopMoveTests.bishopMoveUntilEdge.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.BishopMoveTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ChessBoardTests.executor&quot;: &quot;Run&quot;,
     &quot;Maven.chess [compile].executor&quot;: &quot;Run&quot;,
     &quot;Maven.chess [install].executor&quot;: &quot;Run&quot;,
     &quot;Maven.chess [test].executor&quot;: &quot;Run&quot;,
@@ -56,8 +62,8 @@
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -93,11 +99,17 @@
       <option name="presentableId" value="Default" />
       <updated>1725983332497</updated>
       <workItem from="1725983353672" duration="9271000" />
-      <workItem from="1726441116837" duration="606000" />
+      <workItem from="1726441116837" duration="3255000" />
+      <workItem from="1726444389314" duration="1000" />
+      <workItem from="1726444422828" duration="278000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
