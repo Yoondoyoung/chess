@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="40362976-303f-48a0-9bb7-bd43d5c088bd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/shared/chess/ChessBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shared/chess/ChessBoard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/chess/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/chess/ChessBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shared/src/main/java/movecalc/ChessMoveCalc.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/movecalc/ChessMoveCalc.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,7 +98,7 @@
       <workItem from="1725983353672" duration="9271000" />
       <workItem from="1726441116837" duration="3255000" />
       <workItem from="1726444389314" duration="1000" />
-      <workItem from="1726444422828" duration="6323000" />
+      <workItem from="1726444422828" duration="6761000" />
     </task>
     <servers />
   </component>

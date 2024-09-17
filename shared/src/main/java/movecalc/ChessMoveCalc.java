@@ -33,9 +33,11 @@ public class ChessMoveCalc {
         int newCol = myPosition.getColumn() + changeCol;
         while (checkBounds(newRow, newCol, board)) {
             ChessPosition newPosition = new ChessPosition(newRow, newCol);
+            // if next position is null, keep going
             if (board.getPiece(newPosition) == null) {
                 tempMoves.add(new ChessMove(myPosition, newPosition, null));
             } else {
+            // else get the piece and stop
                 tempMoves.add(new ChessMove(myPosition, newPosition, null));
                 break;
             }
