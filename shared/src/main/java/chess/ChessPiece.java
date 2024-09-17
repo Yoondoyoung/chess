@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 public class ChessPiece {
 
-    public ChessGame.TeamColor pieceColor;
+    private ChessGame.TeamColor pieceColor;
     private PieceType type;
 
     public ChessPiece(ChessGame.TeamColor pieceColor, ChessPiece.PieceType type) {

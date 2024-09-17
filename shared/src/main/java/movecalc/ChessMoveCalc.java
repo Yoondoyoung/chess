@@ -22,7 +22,10 @@ public class ChessMoveCalc {
         if(this.type == ChessPiece.PieceType.BISHOP){
             BishopMove bi = new BishopMove(this.color, this.type);
             return bi.pieceMoves(board, position);
-        }else{
+        } else if (this.type == ChessPiece.PieceType.KING) {
+            KingMove ki = new KingMove(this.color, this.type);
+            return ki.pieceMoves(board, position);
+        } else{
             throw new RuntimeException("Not implemented");
         }
     }
@@ -54,7 +57,8 @@ public class ChessMoveCalc {
             //If the position is not empty
             if (board.getPiece(newPosition) != null) {
                 //Get the piece
-                return this.color != board.getPiece(newPosition).pieceColor;
+                System.out.println("this.color : "+this.color+"\n that.color : "+board.getPiece(newPosition).getTeamColor());
+                return this.color != board.getPiece(newPosition).getTeamColor();
             } else {
                 return true;
             }
