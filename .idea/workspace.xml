@@ -7,23 +7,22 @@
     <list default="true" id="40362976-303f-48a0-9bb7-bd43d5c088bd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/shared/chess/ChessBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shared/chess/ChessBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/shared/chess/ChessGame$TeamColor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shared/chess/ChessGame$TeamColor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/shared/chess/ChessGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shared/chess/ChessGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/shared/chess/ChessMove.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shared/chess/ChessMove.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/shared/chess/ChessPiece$PieceType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shared/chess/ChessPiece$PieceType.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/shared/chess/ChessPiece.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shared/chess/ChessPiece.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/shared/chess/ChessPosition.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shared/chess/ChessPosition.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/shared/passoff/chess/ChessMoveTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/shared/passoff/chess/ChessMoveTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/shared/passoff/chess/ChessPositionTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/shared/passoff/chess/ChessPositionTests.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shared/src/main/java/chess/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/chess/ChessBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/chess/ChessGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/chess/ChessGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/chess/ChessMove.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/chess/ChessMove.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shared/src/main/java/chess/ChessPiece.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/chess/ChessPiece.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -101,7 +100,7 @@
       <workItem from="1725983353672" duration="9271000" />
       <workItem from="1726441116837" duration="3255000" />
       <workItem from="1726444389314" duration="1000" />
-      <workItem from="1726444422828" duration="278000" />
+      <workItem from="1726444422828" duration="4036000" />
     </task>
     <servers />
   </component>

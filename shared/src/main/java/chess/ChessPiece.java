@@ -1,5 +1,7 @@
 package chess;
 
+import movecalc.ChessMoveCalc;
+
 import java.util.Collection;
 import java.util.Objects;
 
@@ -11,7 +13,7 @@ import java.util.Objects;
  */
 public class ChessPiece {
 
-    private ChessGame.TeamColor pieceColor;
+    public ChessGame.TeamColor pieceColor;
     private PieceType type;
 
     public ChessPiece(ChessGame.TeamColor pieceColor, ChessPiece.PieceType type) {
@@ -53,7 +55,8 @@ public class ChessPiece {
      * @return Collection of valid moves
      */
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition) {
-        throw new RuntimeException("Not implemented");
+        ChessMoveCalc chessMoveCalc = new ChessMoveCalc(this.pieceColor, this.type);
+        return chessMoveCalc.pieceMoves(board, myPosition);
     }
 
     @Override
