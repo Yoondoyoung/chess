@@ -31,10 +31,6 @@ public class ChessPosition {
         return this.row;
     }
 
-    public void setRow(int row){
-        this.row = row;
-    }
-
     /**
      * @return which column this position is in
      * 1 codes for the left row
@@ -43,16 +39,8 @@ public class ChessPosition {
         return this.col;
     }
 
-    public void setCol(int col){
-        this.col = col;
-    }
-
     public ChessPiece getPiece(){
         return this.piece;
-    }
-
-    public void setPiece(ChessPiece piece){
-        this.piece = piece;
     }
 
     @Override
