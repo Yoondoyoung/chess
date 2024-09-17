@@ -46,9 +46,12 @@ public class ChessMoveCalc {
     }
 
     public boolean checkBounds(int newRow, int newCol, ChessBoard board){
+        //Check valid range of move
         if ((newRow < 9 && newRow > 0) && (newCol < 9 && newCol > 0)) {
             ChessPosition newPosition = new ChessPosition(newRow, newCol);
+            //If the position is not empty
             if (board.getPiece(newPosition) != null) {
+                //Get the piece
                 return this.color != board.getPiece(newPosition).pieceColor;
             } else {
                 return true;
