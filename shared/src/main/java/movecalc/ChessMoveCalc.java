@@ -22,10 +22,11 @@ public class ChessMoveCalc {
         if(this.type == ChessPiece.PieceType.BISHOP){
             BishopMove bi = new BishopMove(this.color, this.type);
             return bi.pieceMoves(board, position);
+        }else{
+            throw new RuntimeException("Not implemented");
         }
-        throw new RuntimeException("Not implemented");
     }
-
+//Check Direction
     public Collection<ChessMove> checkDirection(int changeRow, int changeCol, ChessPosition myPosition, ChessBoard board){
         Collection<ChessMove> tempMoves = new ArrayList<>();
         int newRow = myPosition.getRow() + changeRow;
