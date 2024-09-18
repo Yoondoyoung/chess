@@ -25,6 +25,9 @@ public class ChessMoveCalc {
         } else if (this.type == ChessPiece.PieceType.KING) {
             KingMove ki = new KingMove(this.color, this.type);
             return ki.pieceMoves(board, position);
+        } else if (this.type == ChessPiece.PieceType.KNIGHT) {
+            KnightMove kn = new KnightMove(this.color, this.type);
+            return kn.pieceMoves(board, position);
         } else{
             throw new RuntimeException("Not implemented");
         }
@@ -63,6 +66,7 @@ public class ChessMoveCalc {
                 return true;
             }
         } else {
+            System.out.println("Out of index of board size");
             return false;
         }
     }
