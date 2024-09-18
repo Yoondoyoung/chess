@@ -50,6 +50,8 @@
     "JUnit.ChessMoveTests.executor": "Run",
     "JUnit.ChessPositionTests.executor": "Run",
     "JUnit.KingMoveTests.executor": "Run",
+    "JUnit.KnightMoveTests.executor": "Run",
+    "JUnit.PawnMoveTests.executor": "Run",
     "Maven.chess [compile].executor": "Run",
     "Maven.chess [install].executor": "Run",
     "Maven.chess [test].executor": "Run",
@@ -104,7 +106,7 @@
       <workItem from="1725983353672" duration="9271000" />
       <workItem from="1726441116837" duration="3255000" />
       <workItem from="1726444389314" duration="1000" />
-      <workItem from="1726444422828" duration="12892000" />
+      <workItem from="1726444422828" duration="14529000" />
     </task>
     <servers />
   </component>
