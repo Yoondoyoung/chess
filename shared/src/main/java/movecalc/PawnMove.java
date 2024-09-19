@@ -29,16 +29,9 @@ public class PawnMove extends ChessMoveCalc{
 
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition){
         int num = 0;
+        boolean front = false;
         Collection<ChessMove> possibleMoves = new ArrayList<>();
-        /* {1,1} = Upper Right
-           {-1,1} = Upper Left
-           {-1,-1} = Under Left
-           {1,-1} = Under Right
-        */
-        int[][] newPositionsDisplacement =
-                {
-                        {0,1} //Up
-                };
+
         for (int[] displace: newPositionsDisplacement){
             System.out.println("Round: "+num);
             System.out.println("myposition.getRow: "+myPosition.getRow());
@@ -48,12 +41,56 @@ public class PawnMove extends ChessMoveCalc{
             System.out.println("newRow: "+newRow);
             System.out.println("newColumn: "+newCol+"");
             if (checkBounds(newRow, newCol, board)){
-                System.out.println("Okay to move: "+checkBounds(newRow,newCol,board)+"\n");
-                possibleMoves.add(new ChessMove(myPosition, new ChessPosition(newRow, newCol), null));
+                ChessPosition newPosition = new ChessPosition(newRow, newCol);
+                if ((displace[1] != 0) && (board.getPiece(newPosition) != null) && (board.getPiece(newPosition).getTeamColor() != this.color)) {
+                    possibleMoves.addAll(this.addPromo(board, myPosition, newPosition));
+                }
+                if ((displace[1] == 0) && (board.getPiece(newPosition) == null)) {
+                    if (checkBounds(newRow, newCol, board)) {
+                        front = true;
+                        possibleMoves.addAll(this.addPromo(board, myPosition, newPosition));
+                    }
+                }
+
+
             }
             num++;
         }
+
+        if (myPosition.getRow() == this.startRow){
+            int newRow = myPosition.getRow() + this.startDisplacement[0];
+            int newCol = myPosition.getColumn() + this.startDisplacement[1];
+            if ((newRow < 9 && newRow > 0) && (newCol < 9 && newCol > 0) && front) {
+                ChessPosition newPosition = new ChessPosition(newRow, newCol);
+                if ((board.getPiece(newPosition) == null)) {
+                    possibleMoves.add(new ChessMove(myPosition, newPosition, null));
+                }
+            }
+        }
         return possibleMoves;
+    }
+
+    public Collection<ChessMove> addPromo(ChessBoard board, ChessPosition myPosition, ChessPosition newPosition){
+        Collection<ChessMove> tempMoves = new ArrayList<>();
+        if (canPromote(newPosition.getRow(), newPosition.getColumn())) {
+            for (ChessPiece.PieceType promoType : this.promoTypes) {
+                if ((promoType != ChessPiece.PieceType.PAWN) && (promoType != ChessPiece.PieceType.KING)) {
+                    tempMoves.add(new ChessMove(myPosition, newPosition, promoType));
+                }
+            }
+        } else {
+            tempMoves.add(new ChessMove(myPosition, newPosition, null));
+        }
+        return tempMoves;
+    }
+
+    public boolean canPromote(int row, int col){
+        if ((row < 9 && row > 0) && (col < 9 && col > 0)) {
+            if ((this.color == ChessGame.TeamColor.BLACK) && (row == 1)) {
+                return true;
+            } else return (this.color == ChessGame.TeamColor.WHITE) && (row == 8);
+        }
+        return false;
     }
 
 }
