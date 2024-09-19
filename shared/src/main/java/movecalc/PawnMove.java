@@ -39,7 +39,7 @@ public class PawnMove extends ChessMoveCalc{
             int newRow = myPosition.getRow() + displace[0];
             int newCol = myPosition.getColumn() + displace[1];
             System.out.println("newRow: "+newRow);
-            System.out.println("newColumn: "+newCol+"");
+            System.out.println("newColumn: "+newCol);
             if (checkBounds(newRow, newCol, board)){
                 ChessPosition newPosition = new ChessPosition(newRow, newCol);
                 if ((displace[1] != 0) && (board.getPiece(newPosition) != null) && (board.getPiece(newPosition).getTeamColor() != this.color)) {
@@ -51,8 +51,6 @@ public class PawnMove extends ChessMoveCalc{
                         possibleMoves.addAll(this.addPromo(board, myPosition, newPosition));
                     }
                 }
-
-
             }
             num++;
         }
@@ -71,17 +69,17 @@ public class PawnMove extends ChessMoveCalc{
     }
 
     public Collection<ChessMove> addPromo(ChessBoard board, ChessPosition myPosition, ChessPosition newPosition){
-        Collection<ChessMove> tempMoves = new ArrayList<>();
+        Collection<ChessMove> temp = new ArrayList<>();
         if (canPromote(newPosition.getRow(), newPosition.getColumn())) {
             for (ChessPiece.PieceType promoType : this.promoTypes) {
                 if ((promoType != ChessPiece.PieceType.PAWN) && (promoType != ChessPiece.PieceType.KING)) {
-                    tempMoves.add(new ChessMove(myPosition, newPosition, promoType));
+                    temp.add(new ChessMove(myPosition, newPosition, promoType));
                 }
             }
         } else {
-            tempMoves.add(new ChessMove(myPosition, newPosition, null));
+            temp.add(new ChessMove(myPosition, newPosition, null));
         }
-        return tempMoves;
+        return temp;
     }
 
     public boolean canPromote(int row, int col){

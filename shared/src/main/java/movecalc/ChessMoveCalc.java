@@ -32,7 +32,14 @@ public class ChessMoveCalc {
             PawnMove pa = new PawnMove(this.color, this.type);
             return pa.pieceMoves(board, position);
 
-        } else{
+        } else if (this.type == ChessPiece.PieceType.QUEEN) {
+            QueenMove qu = new QueenMove(this.color, this.type);
+            return qu.pieceMoves(board, position);
+
+        } else if (this.type == ChessPiece.PieceType.ROOK){
+            RookMove ro = new RookMove(this.color, this.type);
+            return ro.pieceMoves(board, position);
+        } else {
             throw new RuntimeException("Not implemented");
         }
     }
