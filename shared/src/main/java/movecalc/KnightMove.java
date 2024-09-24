@@ -38,8 +38,8 @@ public class KnightMove extends ChessMoveCalc{
             int newCol = myPosition.getColumn() + displace[1];
             System.out.println("newRow: "+newRow);
             System.out.println("newColumn: "+newCol+"");
-            if (checkBounds(newRow, newCol, board)){
-                System.out.println("Okay to move: "+checkBounds(newRow,newCol,board)+"\n");
+            if (checkBound(newRow, newCol, board)){
+                System.out.println("Okay to move: "+checkBound(newRow,newCol,board)+"\n");
                 possibleMoves.add(new ChessMove(myPosition, new ChessPosition(newRow, newCol), null));
             }
             num++;

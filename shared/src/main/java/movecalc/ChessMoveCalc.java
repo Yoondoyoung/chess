@@ -1,85 +1,64 @@
 package movecalc;
 
-import chess.ChessGame;
-import chess.ChessPiece;
-import chess.ChessMove;
-import chess.ChessBoard;
-import chess.ChessPosition;
+import chess.*;
+import movecalc.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 public class ChessMoveCalc {
-    public ChessGame.TeamColor color;
-    public ChessPiece.PieceType type;
 
-    public ChessMoveCalc(ChessGame.TeamColor pieceColor, ChessPiece.PieceType type) {
-        this.color = pieceColor;
-        this.type = type;
+    ChessGame.TeamColor teamColor;
+    private ChessPiece.PieceType pieceType;
+
+    public ChessMoveCalc(ChessGame.TeamColor teamColor, ChessPiece.PieceType type) {
+        this.teamColor = teamColor;
+        this.pieceType = type;
     }
 
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition position) {
-        if(this.type == ChessPiece.PieceType.BISHOP){
-            BishopMove bi = new BishopMove(this.color, this.type);
-            return bi.pieceMoves(board, position);
-        } else if (this.type == ChessPiece.PieceType.KING) {
-            KingMove ki = new KingMove(this.color, this.type);
-            return ki.pieceMoves(board, position);
-        } else if (this.type == ChessPiece.PieceType.KNIGHT) {
-            KnightMove kn = new KnightMove(this.color, this.type);
-            return kn.pieceMoves(board, position);
-        } else if (this.type == ChessPiece.PieceType.PAWN) {
-            PawnMove pa = new PawnMove(this.color, this.type);
-            return pa.pieceMoves(board, position);
-
-        } else if (this.type == ChessPiece.PieceType.QUEEN) {
-            QueenMove qu = new QueenMove(this.color, this.type);
-            return qu.pieceMoves(board, position);
-
-        } else if (this.type == ChessPiece.PieceType.ROOK){
-            RookMove ro = new RookMove(this.color, this.type);
-            return ro.pieceMoves(board, position);
-        } else {
-            throw new RuntimeException("Not implemented");
+        switch (this.pieceType) {
+            case BISHOP:
+                return new BishopMove(this.teamColor, this.pieceType).pieceMoves(board, position);
+            case KING:
+                return new KingMove(this.teamColor, this.pieceType).pieceMoves(board, position);
+            case PAWN:
+                return new PawnMove(this.teamColor, this.pieceType).pieceMoves(board, position);
+            case ROOK:
+                return new RookMove(this.teamColor, this.pieceType).pieceMoves(board, position);
+            case KNIGHT:
+                return new KnightMove(this.teamColor, this.pieceType).pieceMoves(board, position);
+            case QUEEN:
+                return new QueenMove(this.teamColor, this.pieceType).pieceMoves(board, position);
+            default:
+                throw new UnsupportedOperationException("Move calculation not implemented for this piece.");
         }
     }
-//Check Direction
-    public Collection<ChessMove> checkDirection(int changeRow, int changeCol, ChessPosition myPosition, ChessBoard board){
-        Collection<ChessMove> tempMoves = new ArrayList<>();
-        int newRow = myPosition.getRow() + changeRow;
-        int newCol = myPosition.getColumn() + changeCol;
-        while (checkBounds(newRow, newCol, board)) {
+
+    public Collection<ChessMove> checkDirection(int rowChange, int colChange, ChessPosition position, ChessBoard board) {
+        Collection<ChessMove> moves = new ArrayList<>();
+        int newRow = position.getRow() + rowChange;
+        int newCol = position.getColumn() + colChange;
+
+        while (checkBound(newRow, newCol, board)) {
             ChessPosition newPosition = new ChessPosition(newRow, newCol);
-            // if next position is null, keep going
-            if (board.getPiece(newPosition) == null) {
-                tempMoves.add(new ChessMove(myPosition, newPosition, null));
-            } else {
-            // else get the piece and stop
-                tempMoves.add(new ChessMove(myPosition, newPosition, null));
-                break;
-            }
-            newRow = newRow + changeRow;
-            newCol = newCol + changeCol;
+            ChessPiece targetPiece = board.getPiece(newPosition);
+
+            moves.add(new ChessMove(position, newPosition, null));
+            if (targetPiece != null) break; // 기물이 있으면 이동을 멈춤
+
+            newRow += rowChange;
+            newCol += colChange;
         }
-        return tempMoves;
+        return moves;
     }
 
-    public boolean checkBounds(int newRow, int newCol, ChessBoard board){
-        //Check valid range of move
-        if ((newRow < 9 && newRow > 0) && (newCol < 9 && newCol > 0)) {
-            ChessPosition newPosition = new ChessPosition(newRow, newCol);
-            //If the position is not empty
-            if (board.getPiece(newPosition) != null) {
-                //Get the piece
-                System.out.println("this.color : "+this.color+"\n that.color : "+board.getPiece(newPosition).getTeamColor());
-                return this.color != board.getPiece(newPosition).getTeamColor();
-            } else {
-                return true;
-            }
-        } else {
-            System.out.println("Out of index of board size");
-            return false;
+    public boolean checkBound(int row, int col, ChessBoard board) {
+        if (row < 1 || row > 8 || col < 1 || col > 8) {
+            return false; // 경계를 벗어남
         }
+        ChessPiece piece = board.getPiece(new ChessPosition(row, col));
+        return piece == null || this.teamColor != piece.getTeamColor(); // 상대편 기물이 있는 경우만 이동 가능
     }
 
 
