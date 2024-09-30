@@ -1,5 +1,8 @@
 package chess;
 
+import movecalc.ChessMoveCalc;
+
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -13,15 +16,12 @@ public class ChessGame {
 
     private TeamColor teamTurn;
     private ChessBoard board;
-    private ChessBoard clonedBoard;
-    private ChessMove lastMove;
-    private ChessPiece takenPiece;
-    private boolean isResigned;
+    private ChessBoard cloneBoard;
+    private boolean isCheck = false;
+
     public ChessGame() {
         this.board = new ChessBoard();
-        this.clonedBoard = new ChessBoard();
         this.teamTurn = TeamColor.WHITE;
-        this.isResigned = false;
     }
 
     /**
@@ -56,7 +56,27 @@ public class ChessGame {
      * startPosition
      */
     public Collection<ChessMove> validMoves(ChessPosition startPosition) {
-        throw new RuntimeException("ValidMoves?");
+        if(board.getPiece(startPosition) != null){
+            System.out.println("Start : "+startPosition);
+            ChessPiece target = new ChessPiece(this.teamTurn, board.getPiece(startPosition).getPieceType());
+            Collection<ChessMove> possibleMove = new ArrayList<>();
+            this.cloneBoard();
+
+
+        }
+
+        throw new RuntimeException("Testing");
+    }
+
+    private ChessBoard cloneBoard() {
+        ChessBoard clonedBoard = new ChessBoard();
+        for (int row = 0; row < this.board.board.length; row++) {
+            for (int col = 0; col < this.board.board[row].length; col++) {
+                ChessPosition pos = new ChessPosition(row + 1, col + 1);
+                clonedBoard.addPiece(pos, this.board.getPiece(pos));
+            }
+        }
+        return clonedBoard;
     }
 
     /**
@@ -66,7 +86,15 @@ public class ChessGame {
      * @throws InvalidMoveException if move is invalid
      */
     public void makeMove(ChessMove move) throws InvalidMoveException {
-        throw new RuntimeException("makeMove?");
+        System.out.println("Move : "+move);
+        System.out.println(findKingPosition(teamTurn, board));
+        ChessPiece target= this.board.getPiece(move.getStartPosition());
+        ChessPosition curPo = new ChessPosition(move.getStartPosition().getRow(), move.getStartPosition().getColumn());
+        ChessPosition newPo = new ChessPosition(move.getEndPosition().getRow(), move.getEndPosition().getColumn());
+        Collection<ChessMove> validMove = target.pieceMoves(this.board, newPo);
+
+        this.board.addPiece(newPo, target);
+        this.board.addPiece(curPo, null);
     }
 
     /**
@@ -76,7 +104,42 @@ public class ChessGame {
      * @return True if the specified team is in check
      */
     public boolean isInCheck(TeamColor teamColor) {
-        throw new RuntimeException("isInCheck?");
+        return true;
+    }
+
+    public boolean isInCheck(TeamColor color, ChessPosition position){
+        ChessPiece target = new ChessPiece(color, board.getPiece(position).getPieceType());
+        return false;
+    }
+
+    public boolean isThreathened(ChessBoard board, ChessPosition pos, ChessGame.TeamColor color){
+        ChessPiece[][] pieces = board.board;
+
+        for(int row = 0; row < pieces.length; row++){
+            for(int col = 0; col < pieces[row].length; col++){
+                ChessPosition target = new ChessPosition(row+1, col+1);
+                ChessPiece piece = pieces[row][col];
+                if(pieces[row][col] != null && board.getPiece(target).getTeamColor() != color){
+                    Collection<ChessMove> moves =piece.pieceMoves(board, target);
+                    if(moves.stream().anyMatch(move -> move.getEndPosition().equals(pos))){
+                        return true;
+                    }
+
+                }
+            }
+        }
+    }
+
+    public ChessPosition findKingPosition(ChessGame.TeamColor color ,ChessBoard board){
+        ChessPiece[][] pieces = board.board;
+        for(int i = 0; i < pieces.length; i++){
+            for(int j = 0; j < pieces[i].length; j++){
+                if(pieces[i][j].getPieceType() == ChessPiece.PieceType.KING && pieces[i][j] != null && this.teamTurn == color){
+                    return new ChessPosition(i+1, j+1);
+                }
+            }
+        }
+        return null;
     }
 
     /**

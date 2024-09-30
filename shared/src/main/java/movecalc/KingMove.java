@@ -31,15 +31,11 @@ public class KingMove extends ChessMoveCalc{
                     {0, -1} //Down
                 };
         for (int[] displace: newPositionsDisplacement){
-            System.out.println("Round: "+num);
-            System.out.println("myposition.getRow: "+myPosition.getRow());
-            System.out.println("myposition.getColumn: "+myPosition.getColumn());
             int newRow = myPosition.getRow() + displace[0];
             int newCol = myPosition.getColumn() + displace[1];
-            System.out.println("newRow: "+newRow);
-            System.out.println("newColumn: "+newCol+"");
+
             if (checkBound(newRow, newCol, board)){
-                System.out.println("Okay to move: "+checkBound(newRow,newCol,board)+"\n");
+
                 possibleMoves.add(new ChessMove(myPosition, new ChessPosition(newRow, newCol), null));
             }
             num++;
