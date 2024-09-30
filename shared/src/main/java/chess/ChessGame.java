@@ -17,6 +17,8 @@ public class ChessGame {
     private TeamColor teamTurn;
     private ChessBoard board;
     private ChessBoard cloneBoard;
+    private ChessPiece takenPiece;
+    private ChessMove lastMove;
     private boolean isCheck = false;
 
     public ChessGame() {
@@ -86,15 +88,11 @@ public class ChessGame {
      * @throws InvalidMoveException if move is invalid
      */
     public void makeMove(ChessMove move) throws InvalidMoveException {
-        System.out.println("Move : "+move);
-        System.out.println(findKingPosition(teamTurn, board));
-        ChessPiece target= this.board.getPiece(move.getStartPosition());
-        ChessPosition curPo = new ChessPosition(move.getStartPosition().getRow(), move.getStartPosition().getColumn());
-        ChessPosition newPo = new ChessPosition(move.getEndPosition().getRow(), move.getEndPosition().getColumn());
-        Collection<ChessMove> validMove = target.pieceMoves(this.board, newPo);
-
-        this.board.addPiece(newPo, target);
-        this.board.addPiece(curPo, null);
+        ChessPiece movedPiece = board.getPiece(move.getStartPosition());
+        takenPiece = board.getPiece(move.getEndPosition());
+        board.addPiece(move.getEndPosition(), movedPiece);
+        board.addPiece(move.getStartPosition(), null);
+        lastMove = move;
     }
 
     /**
@@ -104,12 +102,13 @@ public class ChessGame {
      * @return True if the specified team is in check
      */
     public boolean isInCheck(TeamColor teamColor) {
-        return true;
+        ChessPosition kingPos = findKingPosition(teamColor, this.board);
+        return isInCheck(teamColor, kingPos);
     }
 
-    public boolean isInCheck(TeamColor color, ChessPosition position){
-        ChessPiece target = new ChessPiece(color, board.getPiece(position).getPieceType());
-        return false;
+    public boolean isInCheck(TeamColor color, ChessPosition pos){
+
+        return isThreathened(this.board, pos, color);
     }
 
     public boolean isThreathened(ChessBoard board, ChessPosition pos, ChessGame.TeamColor color){
@@ -128,6 +127,7 @@ public class ChessGame {
                 }
             }
         }
+        return false;
     }
 
     public ChessPosition findKingPosition(ChessGame.TeamColor color ,ChessBoard board){
