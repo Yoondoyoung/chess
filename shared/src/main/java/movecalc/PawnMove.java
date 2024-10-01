@@ -9,7 +9,7 @@ public class PawnMove extends ChessMoveCalc {
     private int startRow; // 폰이 시작할 때 위치하는 행
     private int[][] moveDirections; // 폰이 이동할 수 있는 방향들
     private int[] doubleStepMove; // 폰이 첫 이동 시 두 칸 이동 가능
-    private ChessPiece.PieceType[] promotionOptions = {ChessPiece.PieceType.QUEEN, ChessPiece.PieceType.BISHOP, ChessPiece.PieceType.KNIGHT, ChessPiece.PieceType.ROOK};
+    public ChessPiece.PieceType[] promotionOptions = {ChessPiece.PieceType.QUEEN, ChessPiece.PieceType.BISHOP, ChessPiece.PieceType.KNIGHT, ChessPiece.PieceType.ROOK};
 
     public PawnMove(ChessGame.TeamColor teamColor, ChessPiece.PieceType type) {
         super(teamColor, type);

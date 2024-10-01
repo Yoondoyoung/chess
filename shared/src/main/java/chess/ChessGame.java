@@ -73,7 +73,6 @@ public class ChessGame {
                 }
                 undoMove(clonedBoard, move);
             }
-
             return validMoves;
         }else{
             return null;
@@ -99,19 +98,25 @@ public class ChessGame {
      * @throws InvalidMoveException if move is invalid
      */
     public void makeMove(ChessMove move) throws InvalidMoveException {
-        ChessPosition target = new ChessPosition(move.getStartPosition().getRow()+1, move.getStartPosition().getColumn()+1);
+        ChessPosition target = new ChessPosition(move.getStartPosition().getRow(), move.getStartPosition().getColumn());
         System.out.println(this.board.getPiece(target));
-        if(isInCheck(this.teamTurn)){
+        if(isInCheck(this.teamTurn) || this.board.getPiece(target) == null || !validMoves(move.getStartPosition()).stream().anyMatch(moving -> moving.getEndPosition().equals(move.getEndPosition()))){
             throw new InvalidMoveException();
         }
-        if(target.getPiece() == null){
-            throw new InvalidMoveException();
-        }
+
         ChessPiece movedPiece = board.getPiece(move.getStartPosition());
+
+        if(movedPiece.getPieceType() == ChessPiece.PieceType.PAWN){
+            if(move.getPromotionPiece() != null){
+                movedPiece.type = move.getPromotionPiece();
+            }
+
+        }
         takenPiece = board.getPiece(move.getEndPosition());
         board.addPiece(move.getEndPosition(), movedPiece);
         board.addPiece(move.getStartPosition(), null);
         lastMove = move;
+        this.teamTurn = (this.teamTurn == TeamColor.WHITE) ? TeamColor.BLACK : TeamColor.WHITE;
     }
 
     public void applyMove(ChessBoard board, ChessMove move) {
@@ -218,7 +223,7 @@ public class ChessGame {
      * @return True if the specified team is in stalemate, otherwise false
      */
     public boolean isInStalemate(TeamColor teamColor) {
-        return !isInCheck(teamColor, this.board) && !canMoveOutOfCheck(teamColor);
+        return !isInCheck(teamColor, this.board) && canMoveOutOfCheck(teamColor);
     }
 
     /**
