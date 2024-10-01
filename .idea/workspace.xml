@@ -6,8 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="40362976-303f-48a0-9bb7-bd43d5c088bd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/shared/chess/ChessGame$TeamColor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shared/chess/ChessGame$TeamColor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/shared/chess/ChessGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shared/chess/ChessGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/shared/movecalc/KingMove.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shared/movecalc/KingMove.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shared/src/main/java/chess/ChessGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/chess/ChessGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/chess/ChessPiece.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/chess/ChessPiece.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/movecalc/KingMove.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/movecalc/KingMove.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/movecalc/KnightMove.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/movecalc/KnightMove.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/movecalc/QueenMove.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/movecalc/QueenMove.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,23 +137,12 @@
       <workItem from="1727026202214" duration="18587000" />
       <workItem from="1727290876216" duration="21000" />
       <workItem from="1727290913157" duration="9788000" />
-      <workItem from="1727650845151" duration="6526000" />
+      <workItem from="1727650845151" duration="9280000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/shared/src/main/java/chess/ChessGame.java</url>
-          <line>61</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

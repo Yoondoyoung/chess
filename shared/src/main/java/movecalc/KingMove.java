@@ -14,11 +14,7 @@ public class KingMove extends ChessMoveCalc{
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition){
         int num = 0;
         Collection<ChessMove> possibleMoves = new ArrayList<>();
-        /* {1,1} = Upper Right
-           {-1,1} = Upper Left
-           {-1,-1} = Under Left
-           {1,-1} = Under Right
-        */
+
         int[][] newPositionsDisplacement =
                 {
                     {1, 1}, //Uppser Right

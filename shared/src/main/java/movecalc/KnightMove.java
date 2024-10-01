@@ -14,11 +14,7 @@ public class KnightMove extends ChessMoveCalc{
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition){
         int num = 0;
         Collection<ChessMove> possibleMoves = new ArrayList<>();
-        /* {1,1} = Upper Right
-           {-1,1} = Upper Left
-           {-1,-1} = Under Left
-           {1,-1} = Under Right
-        */
+
         int[][] newPositionsDisplacement =
                 {
                         {-2, 1}, // 1Up 2Left
@@ -31,15 +27,10 @@ public class KnightMove extends ChessMoveCalc{
                         {1, -2} // 2Down 1Right
                 };
         for (int[] displace: newPositionsDisplacement){
-            System.out.println("Round: "+num);
-            System.out.println("myposition.getRow: "+myPosition.getRow());
-            System.out.println("myposition.getColumn: "+myPosition.getColumn());
             int newRow = myPosition.getRow() + displace[0];
             int newCol = myPosition.getColumn() + displace[1];
-            System.out.println("newRow: "+newRow);
-            System.out.println("newColumn: "+newCol+"");
+
             if (checkBound(newRow, newCol, board)){
-                System.out.println("Okay to move: "+checkBound(newRow,newCol,board)+"\n");
                 possibleMoves.add(new ChessMove(myPosition, new ChessPosition(newRow, newCol), null));
             }
             num++;
