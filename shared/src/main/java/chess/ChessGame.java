@@ -17,12 +17,13 @@ public class ChessGame {
     private ChessBoard cloneBoard;
     private ChessPiece takenPiece;
     private ChessMove lastMove;
-    private boolean isCheck = false;
+
 
     public ChessGame() {
         this.board = new ChessBoard();
         this.teamTurn = TeamColor.WHITE;
         this.cloneBoard = new ChessBoard();
+        this.board.resetBoard();
     }
 
     /**
@@ -82,8 +83,8 @@ public class ChessGame {
 
     private ChessBoard cloneBoard() {
         ChessBoard clonedBoard = new ChessBoard();
-        for (int row = 0; row < this.board.board.length; row++) {
-            for (int col = 0; col < this.board.board[row].length; col++) {
+        for (int row = 0; row < this.board.pieces.length; row++) {
+            for (int col = 0; col < this.board.pieces[row].length; col++) {
                 ChessPosition pos = new ChessPosition(row + 1, col + 1);
                 clonedBoard.addPiece(pos, this.board.getPiece(pos));
             }
@@ -121,6 +122,7 @@ public class ChessGame {
 
     public void applyMove(ChessBoard board, ChessMove move) {
         ChessPiece movedPiece = board.getPiece(move.getStartPosition());
+
         takenPiece = board.getPiece(move.getEndPosition());
         board.addPiece(move.getEndPosition(), movedPiece);
         board.addPiece(move.getStartPosition(), null);
@@ -158,7 +160,7 @@ public class ChessGame {
     }
 
     public boolean isThreatened(ChessBoard board, ChessPosition pos, ChessGame.TeamColor color){
-        ChessPiece[][] pieces = board.board;
+        ChessPiece[][] pieces = board.pieces;
 
         for(int row = 0; row < pieces.length; row++){
             for(int col = 0; col < pieces[row].length; col++){
@@ -166,11 +168,9 @@ public class ChessGame {
                 ChessPiece piece = pieces[row][col];
                 if(pieces[row][col] != null && board.getPiece(target).getTeamColor() != color){
                     Collection<ChessMove> moves = piece.pieceMoves(board, target);
-                    System.out.println("Who is attacking? = "+pieces[row][col]);
 
                     if(moves.stream().anyMatch(move -> move.getEndPosition().equals(pos))){
-                        System.out.println("MOVES = "+ moves);
-                        System.out.println("Threatened!");
+                        System.out.println(pieces[row][col]+" can attack your king!");
                         return true;
                     }
                 }
@@ -181,7 +181,7 @@ public class ChessGame {
 
     private Collection<ChessPosition> getAllTeamPiecesPositions(TeamColor teamColor) {
         Collection<ChessPosition> positions = new ArrayList<>();
-        ChessPiece[][] pieces = this.board.board;
+        ChessPiece[][] pieces = this.board.pieces;
         for (int row = 0; row < pieces.length; row++) {
             for (int col = 0; col < pieces[row].length; col++) {
                 if (pieces[row][col] != null && pieces[row][col].getTeamColor() == teamColor) {
@@ -189,11 +189,14 @@ public class ChessGame {
                 }
             }
         }
+        for(ChessPosition po : positions){
+            System.out.println("GetAll : "+po);
+        }
         return positions;
     }
 
     public ChessPosition findKingPosition(ChessGame.TeamColor color ,ChessBoard board){
-        ChessPiece[][] pieces = board.board;
+        ChessPiece[][] pieces = board.pieces;
         for(int i = 0; i < pieces.length; i++){
             for(int j = 0; j < pieces[i].length; j++){
                 if(pieces[i][j] != null && pieces[i][j].type == ChessPiece.PieceType.KING &&  pieces[i][j].getTeamColor() == color){
@@ -223,7 +226,13 @@ public class ChessGame {
      * @return True if the specified team is in stalemate, otherwise false
      */
     public boolean isInStalemate(TeamColor teamColor) {
-        return !isInCheck(teamColor, this.board) && canMoveOutOfCheck(teamColor);
+
+        System.out.println("Is in check = "+isInCheck(teamColor, this.board));
+        System.out.println("CanMoveOutofCheck = "+canMoveOutOfCheck(teamColor));
+        if(!isInCheck(teamColor, this.board) && canMoveOutOfCheck(teamColor)){
+            System.out.println(teamColor + " is in stalemate!");
+        }
+        return !isInCheck(teamColor, this.board) && !canMoveOutOfCheck(teamColor);
     }
 
     /**
@@ -233,6 +242,7 @@ public class ChessGame {
      */
     public void setBoard(ChessBoard board) {
         this.board = board;
+
     }
 
     /**
