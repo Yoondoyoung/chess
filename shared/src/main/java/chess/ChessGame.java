@@ -100,8 +100,9 @@ public class ChessGame {
      */
     public void makeMove(ChessMove move) throws InvalidMoveException {
         ChessPosition target = new ChessPosition(move.getStartPosition().getRow(), move.getStartPosition().getColumn());
-        System.out.println(this.board.getPiece(target));
-        if(isInCheck(this.teamTurn) || this.board.getPiece(target) == null || !validMoves(move.getStartPosition()).stream().anyMatch(moving -> moving.getEndPosition().equals(move.getEndPosition()))){
+        System.out.println("TARGET : "+this.board.getPiece(target));
+        if(isInCheck(this.teamTurn) || this.board.getPiece(target) == null || !validMoves(move.getStartPosition()).stream().anyMatch(moving -> moving.getEndPosition().equals(move.getEndPosition()))
+        || this.board.getPiece(target).getTeamColor() != this.teamTurn){
             throw new InvalidMoveException();
         }
 
