@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="40362976-303f-48a0-9bb7-bd43d5c088bd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/shared/chess/ChessGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shared/chess/ChessGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/chess/ChessGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/chess/ChessGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +43,8 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.Main.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
     "JUnit.BishopMoveTests.bishopMoveUntilEdge.executor": "Run",
     "JUnit.BishopMoveTests.executor": "Debug",
     "JUnit.ChessBoardTests.executor": "Run",
@@ -57,16 +59,23 @@
     "JUnit.PawnMoveTests.executor": "Run",
     "JUnit.QueenMoveTests.executor": "Run",
     "JUnit.RookMoveTests.executor": "Run",
+    "JUnit.StandardAPITests.executor": "Run",
     "JUnit.ValidMovesTests.executor": "Run",
     "JUnit.ValidMovesTests.forcedMove.executor": "Debug",
+    "JavaScript Debug.index.html (1).executor": "Run",
+    "JavaScript Debug.index.html.executor": "Run",
     "Maven.chess [compile].executor": "Run",
     "Maven.chess [install].executor": "Run",
     "Maven.chess [test].executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/yoon/Desktop/cs240/chess/server/src/main/resources",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -79,7 +88,14 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/server/src/main/resources" />
+      <recent name="$PROJECT_DIR$/server/src/test/java" />
+      <recent name="$PROJECT_DIR$/server/src/main/java" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.index.html (1)">
     <configuration name="BishopMoveTests.bishopMoveUntilEdge" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="shared" />
       <extension name="coverage">
@@ -112,8 +128,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="index.html (1)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/chess/server/src/main/resources/web/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/chess/starter-code/3-web-api/resources/web/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.index.html (1)" />
+        <item itemvalue="JavaScript Debug.index.html" />
         <item itemvalue="JUnit.ValidMovesTests.forcedMove" />
         <item itemvalue="JUnit.BishopMoveTests.bishopMoveUntilEdge" />
       </list>
@@ -134,7 +158,7 @@
       <workItem from="1727026202214" duration="18587000" />
       <workItem from="1727290876216" duration="21000" />
       <workItem from="1727290913157" duration="9788000" />
-      <workItem from="1727650845151" duration="31450000" />
+      <workItem from="1727650845151" duration="41749000" />
     </task>
     <servers />
   </component>
