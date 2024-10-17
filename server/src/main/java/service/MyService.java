@@ -1,18 +1,22 @@
 package service;
 
-import dataAccess.DataAccessException;
+import dataAccess.*;
 import model.AuthData;
 import model.UserData;
-import spark.Request;
 
 import java.util.Objects;
 import java.util.UUID;
 
 public class MyService {
-    UserData existingUser = new UserData("ExistingUser", "existingUserPassword", "eu@mail.com");
-    AuthData auth = new AuthData("existingAuth", "temp");
+    private final UserDAO userDAO;
+    private final AuthDAO authDAO;
+    private final GameDAO gameDAO;
     private static MyService instance;
-    public MyService() throws DataAccessException {}
+    public MyService() throws DataAccessException {
+        this.userDAO = new MemoryUserDAO();
+        this.authDAO = new MemoryAuthDAO();
+        this.gameDAO = new MemoryGameDAO();
+    }
 
     public static synchronized MyService getInstance() throws DataAccessException {
         if (instance == null){
@@ -22,37 +26,35 @@ public class MyService {
         }
     }
 
-    public void clear(){
-        System.out.println("Clear executed");
+    public void clear() throws DataAccessException {
+        userDAO.clear();
+        authDAO.clear();
+        gameDAO.clear();
     }
 
-    public String register(UserData userData){
-        AuthData auth;
-        if(Objects.equals(userData.username(), existingUser.username())){
-            return null;
+    public String register(UserData userData) throws DataAccessException {
+        if(userDAO.getUser(userData.username()) == null){
+            AuthData auth = authDAO.createAuth(userData.username());
+            authDAO.insertAuth(auth);
+            userDAO.createUser(userData);
+            return auth.authToken();
         }else{
-            auth = new AuthData(UUID.randomUUID().toString(), userData.username());
+            return null;
         }
-        return auth.authToken();
     }
 
-    public String login(UserData userData){
-        AuthData auth;
-        if(!Objects.equals(userData.password(), existingUser.password())){
-            return null;
-        }else{
-            auth = new AuthData(UUID.randomUUID().toString(), userData.username());
+    public String login(UserData userData) throws DataAccessException {
+        if(userDAO.getUser(userData.username()) != null){
+            System.out.println("Login : "+userDAO.getUser(userData.username()));
+            UserData exis = userDAO.getUser(userData.username());
+            if(exis.password().equals(userData.password())){
+                return authDAO.getAuth(userData.username()).authToken();
+            }
         }
-
-        return auth.authToken();
+        return null;
     }
 
     public void logout(String authToken) throws Exception {
-        //Delete auth token
-        if(Objects.equals(authToken, auth.authToken())){
-            auth = null;
-        }else{
-            throw new Exception("Error");
-        }
+
     }
 }

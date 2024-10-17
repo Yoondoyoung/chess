@@ -1,6 +1,8 @@
 package dataAccess;
 
 import model.UserData;
+
+import javax.xml.crypto.Data;
 import java.util.Map;
 import java.util.HashMap;
 public class MemoryUserDAO implements UserDAO{
@@ -24,6 +26,10 @@ public class MemoryUserDAO implements UserDAO{
     @Override
     public String checkPassword(String username) throws DataAccessException {
         return null;
+    }
+
+    public void clear() throws DataAccessException {
+        userStore.clear();
     }
 
 }

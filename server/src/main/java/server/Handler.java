@@ -11,8 +11,6 @@ import service.MyService;
 import spark.Request;
 import spark.Response;
 
-import javax.xml.crypto.Data;
-
 public class Handler {
     private static Handler instance;
     private final MyService service = new MyService();
@@ -62,7 +60,7 @@ public class Handler {
         return gson.toJson(registerResult);
     }
 
-    public Object login(Request req, Response res) {
+    public Object login(Request req, Response res) throws DataAccessException {
         UserData userData;
         String auth;
         // Parse request body to UserData and handle potential JSON errors
