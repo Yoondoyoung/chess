@@ -10,6 +10,7 @@ import java.util.UUID;
 
 public class MyService {
     UserData existingUser = new UserData("ExistingUser", "existingUserPassword", "eu@mail.com");
+    AuthData auth = new AuthData("existingAuth", "temp");
     private static MyService instance;
     public MyService() throws DataAccessException {}
 
@@ -46,7 +47,12 @@ public class MyService {
         return auth.authToken();
     }
 
-    public void logout(String authToken) {
+    public void logout(String authToken) throws Exception {
         //Delete auth token
+        if(Objects.equals(authToken, auth.authToken())){
+            auth = null;
+        }else{
+            throw new Exception("Error");
+        }
     }
 }

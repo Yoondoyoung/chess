@@ -6,6 +6,7 @@ import dataAccess.DataAccessException;
 import model.UserData;
 import model.result.FailureResult;
 import model.result.LoginResult;
+import model.result.LogoutResult;
 import service.MyService;
 import spark.Request;
 import spark.Response;
@@ -94,7 +95,7 @@ public class Handler {
             authToken = req.headers("authorization");
         } catch(JsonSyntaxException e) {
             FailureResult response_500 = new FailureResult("Error: description");
-            return new Gson().toJson(response_500);
+            return gson.toJson(response_500);
         }
 
         try {
@@ -102,9 +103,10 @@ public class Handler {
         } catch (Exception e){
             res.status(401);
             FailureResult response_401 = new FailureResult("Error: unauthorized");
-            return new Gson().toJson(response_401);
+            return gson.toJson(response_401);
         }
 
         res.status(200);
-        return new Gson().toJson(new Result());
+        return gson.toJson(new LogoutResult());
+    }
 }

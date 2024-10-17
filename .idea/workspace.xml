@@ -7,15 +7,9 @@
     <list default="true" id="40362976-303f-48a0-9bb7-bd43d5c088bd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/server/server/Handler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/server/Handler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/server/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/server/Server.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/server/service/MyService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/service/MyService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/server/passoff/server/StandardAPITests.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/server/passoff/server/StandardAPITests.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/server/Handler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/Handler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/service/MyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/service/MyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/model/authData.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/model/AuthData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/model/gameData.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/model/GameData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/model/userData.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/model/UserData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +20,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -167,7 +162,7 @@
       <workItem from="1727026202214" duration="18587000" />
       <workItem from="1727290876216" duration="21000" />
       <workItem from="1727290913157" duration="9788000" />
-      <workItem from="1727650845151" duration="61047000" />
+      <workItem from="1727650845151" duration="63046000" />
     </task>
     <servers />
   </component>
