@@ -87,7 +87,6 @@ public class Handler {
     }
 
     public Object logout(Request req, Response res) {
-
         String authToken = null;
         try {
             authToken = req.headers("authorization");

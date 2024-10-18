@@ -55,6 +55,10 @@ public class MyService {
     }
 
     public void logout(String authToken) throws Exception {
-
+        if(authDAO.isValidAuth(authToken)){
+            authDAO.deleteAuth(authToken);
+        }else{
+            throw new Exception();
+        }
     }
 }
