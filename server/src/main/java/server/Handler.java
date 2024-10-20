@@ -145,8 +145,8 @@ public class Handler {
     }
 
     public Object joinGame(Request req, Response res) throws Exception {
-        String authToken = null;
-        JoinGameRequset joinGameRequset = null;
+        String authToken;
+        JoinGameRequset joinGameRequset;
 
 
         try {
@@ -178,8 +178,8 @@ public class Handler {
     }
 
     public Object listGames(Request req, Response res) throws Exception {
-        String authToken = null;
-        GameListResult gameListResult = null;
+        String authToken;
+        GameListResult gameListResult;
         try {
             authToken = req.headers("authorization");
         } catch(JsonSyntaxException e) {
