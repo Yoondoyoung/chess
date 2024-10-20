@@ -50,7 +50,6 @@ public class MyService {
 
     public String login(UserData userData) throws DataAccessException {
         if(userDAO.getUser(userData.username()) != null){
-            System.out.println("Login : "+userDAO.getUser(userData.username()));
             UserData exis = userDAO.getUser(userData.username());
             if(exis.password().equals(userData.password())){
                 authDAO.insertAuth(authDAO.createAuth(exis.username()));
@@ -78,7 +77,6 @@ public class MyService {
     }
 
     public void joinGame(JoinGameRequset joinGameRequset, String authToken) throws Exception{
-        System.out.println(joinGameRequset.gameID());
         GameData game = gameDAO.getGame(joinGameRequset.gameID());
         String username = authDAO.getAuth(authToken).username();
 

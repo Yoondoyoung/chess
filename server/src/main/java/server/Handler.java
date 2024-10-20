@@ -91,7 +91,7 @@ public class Handler {
     }
 
     public Object logout(Request req, Response res) {
-        String authToken = null;
+        String authToken;
         try {
             authToken = req.headers("authorization");
         } catch(JsonSyntaxException e) {
@@ -112,10 +112,10 @@ public class Handler {
     }
 
     public Object createGame(Request req, Response res) throws Exception {
-        GameData gameData = null;
-        String authToken = null;
+        GameData gameData;
+        String authToken;
 
-        int gameID = 0;
+        int gameID;
         try {
             authToken = req.headers("authorization");
             gameData = gson.fromJson(req.body(), GameData.class);
@@ -140,7 +140,6 @@ public class Handler {
 
         res.status(200);
         CreateGameResult createGameResult = new CreateGameResult(gameID);
-        System.out.println(createGameResult);
         return gson.toJson(createGameResult);
     }
 
@@ -194,7 +193,6 @@ public class Handler {
         }
 
         res.status(200);
-        System.out.println(gameListResult);
         return gson.toJson(gameListResult);
     }
 }
