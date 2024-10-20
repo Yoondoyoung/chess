@@ -358,7 +358,6 @@ public class StandardAPITests {
                 "Authtoken returned by login matched authtoken from prior register");
         Assertions.assertNotEquals(existingAuth, loginTwo.getAuthToken(),
                 "Authtoken returned by login matched authtoken from prior register");
-        System.out.println("Login one : "+ loginOne.getAuthToken() + "  Login two : " + loginTwo.getAuthToken());
         Assertions.assertNotEquals(loginOne.getAuthToken(), loginTwo.getAuthToken(),
                 "Authtoken returned by login matched authtoken from prior login");
 
