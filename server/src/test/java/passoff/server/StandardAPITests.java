@@ -203,7 +203,6 @@ public class StandardAPITests {
         TestListResult listResult = serverFacade.listGames(existingAuth);
 
         Assertions.assertEquals(1, listResult.getGames().length);
-        System.out.println(listResult.getGames()[0]);
         Assertions.assertEquals(existingUser.getUsername(), listResult.getGames()[0].getWhiteUsername());
         Assertions.assertNull(listResult.getGames()[0].getBlackUsername());
     }
