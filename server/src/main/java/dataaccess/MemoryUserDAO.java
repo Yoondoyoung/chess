@@ -16,16 +16,6 @@ public class MemoryUserDAO implements UserDAO{
         userStore.put(user.username(), user);
     }
 
-//    @Override
-//    public void deleteUser() throws DataAccessException {
-//        userStore.clear();
-//    }
-
-//    @Override
-//    public String checkPassword(String username) throws DataAccessException {
-//        return null;
-//    }
-
     public void clear() throws DataAccessException {
         userStore.clear();
     }

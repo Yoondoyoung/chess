@@ -157,7 +157,11 @@ public class Handler {
             res.status(401); // Unauthorized if login fails
             return gson.toJson(new FailureResult("Error: unauthorized"));
         }
-        if ((!Objects.equals(joinGameRequset.playerColor(), "WHITE") && !Objects.equals(joinGameRequset.playerColor(), "BLACK") && Objects.equals(joinGameRequset.playerColor(), null)) || Objects.equals(joinGameRequset.gameID(), 0)){
+        if ((!Objects.equals(joinGameRequset.playerColor(), "WHITE") &&
+                !Objects.equals(joinGameRequset.playerColor(), "BLACK") &&
+                Objects.equals(joinGameRequset.playerColor(), null)) ||
+                Objects.equals(joinGameRequset.gameID(), 0))
+        {
             res.status(400);
             FailureResult response400 = new FailureResult("Error: bad request");
             return new Gson().toJson(response400);

@@ -9,7 +9,11 @@ public class PawnMove extends ChessMoveCalc {
     private int startRow;
     private int[][] moveDirections;
     private int[] doubleStepMove;
-    public ChessPiece.PieceType[] promotionOptions = {ChessPiece.PieceType.QUEEN, ChessPiece.PieceType.BISHOP, ChessPiece.PieceType.KNIGHT, ChessPiece.PieceType.ROOK};
+    public ChessPiece.PieceType[] promotionOptions = {
+            ChessPiece.PieceType.QUEEN,
+            ChessPiece.PieceType.BISHOP,
+            ChessPiece.PieceType.KNIGHT,
+            ChessPiece.PieceType.ROOK};
 
     public PawnMove(ChessGame.TeamColor teamColor, ChessPiece.PieceType type) {
         super(teamColor, type);

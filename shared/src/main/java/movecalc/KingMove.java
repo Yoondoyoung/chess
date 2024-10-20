@@ -26,9 +26,8 @@ public class KingMove extends ChessMoveCalc{
                     {0, -1} //Down
                 };
         for (int[] displace: newPositionsDisplacement){
-            int newRow = myPosition.getRow() + displace[0];
             int newCol = myPosition.getColumn() + displace[1];
-
+            int newRow = myPosition.getRow() + displace[0];
             if (checkBound(newRow, newCol, board)){
 
                 possibleMoves.add(new ChessMove(myPosition, new ChessPosition(newRow, newCol), null));
