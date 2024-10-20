@@ -15,7 +15,7 @@ import java.util.UUID;
 public class MyService {
     private final UserDAO userDAO;
     private final AuthDAO authDAO;
-    private final GameDAO gameDAO;
+    final GameDAO gameDAO;
     private static MyService instance;
     public MyService() throws DataAccessException {
         this.userDAO = new MemoryUserDAO();
