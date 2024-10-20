@@ -5,16 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40362976-303f-48a0-9bb7-bd43d5c088bd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataAccess/AuthDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/AuthDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataAccess/DataAccessException.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/DataAccessException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataAccess/GameDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/GameDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataAccess/MemoryAuthDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/MemoryAuthDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataAccess/MemoryGameDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/MemoryGameDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataAccess/MemoryUserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/MemoryUserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataAccess/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/Handler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/Handler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/service/MyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/service/MyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/test/java/service/ServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/java/service/ServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/dataAccess/AuthDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/dataAccess/AuthDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/dataAccess/DataAccessException.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/dataAccess/DataAccessException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/dataAccess/GameDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/dataAccess/GameDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/dataAccess/MemoryAuthDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/dataAccess/MemoryAuthDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/dataAccess/MemoryGameDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/dataAccess/MemoryGameDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/dataAccess/MemoryUserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/dataAccess/MemoryUserDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/dataAccess/UserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/dataAccess/UserDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/server/Handler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/server/Handler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/service/MyService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/service/MyService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/shared/movecalc/KingMove.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shared/movecalc/KingMove.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/server/service/ServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/server/service/ServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/GameDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/GameDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/MemoryGameDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/MemoryGameDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/MemoryUserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/MemoryUserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/chess/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/chess/ChessBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/chess/ChessGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/chess/ChessGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/chess/ChessMove.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/chess/ChessMove.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/chess/ChessPiece.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/chess/ChessPiece.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/chess/ChessPosition.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/chess/ChessPosition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/movecalc/ChessMoveCalc.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/movecalc/ChessMoveCalc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/movecalc/KingMove.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/movecalc/KingMove.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/movecalc/KnightMove.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/movecalc/KnightMove.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/movecalc/PawnMove.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/movecalc/PawnMove.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/movecalc/QueenMove.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/movecalc/QueenMove.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +205,7 @@
       <workItem from="1727026202214" duration="18587000" />
       <workItem from="1727290876216" duration="21000" />
       <workItem from="1727290913157" duration="9788000" />
-      <workItem from="1727650845151" duration="91804000" />
+      <workItem from="1727650845151" duration="92470000" />
     </task>
     <servers />
   </component>

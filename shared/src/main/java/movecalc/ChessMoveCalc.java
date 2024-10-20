@@ -45,7 +45,9 @@ public class ChessMoveCalc {
             ChessPiece targetPiece = board.getPiece(newPosition);
 
             moves.add(new ChessMove(position, newPosition, null));
-            if (targetPiece != null) break; // 기물이 있으면 이동을 멈춤
+            if (targetPiece != null){
+                break; // 기물이 있으면 이동을 멈춤
+            }
 
             newRow += rowChange;
             newCol += colChange;

@@ -12,7 +12,6 @@ public class KingMove extends ChessMoveCalc{
     }
 
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition){
-        int num = 0;
         Collection<ChessMove> possibleMoves = new ArrayList<>();
 
         int[][] newPositionsDisplacement =
@@ -34,7 +33,6 @@ public class KingMove extends ChessMoveCalc{
 
                 possibleMoves.add(new ChessMove(myPosition, new ChessPosition(newRow, newCol), null));
             }
-            num++;
         }
         return possibleMoves;
     }

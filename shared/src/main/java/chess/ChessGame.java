@@ -155,7 +155,9 @@ public class ChessGame {
     private boolean canMoveOutOfCheck(TeamColor teamColor) {
         for (ChessPosition position : getAllTeamPiecesPositions(teamColor)) {
             Collection<ChessMove> moves = validMoves(position);
-            if (moves != null && !moves.isEmpty()) return true;
+            if (moves != null && !moves.isEmpty()){
+                return true;
+            }
         }
         return false;
     }
@@ -257,8 +259,12 @@ public class ChessGame {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         ChessGame chessGame = (ChessGame) o;
         return getTeamTurn() == chessGame.getTeamTurn() && Objects.equals(getBoard(), chessGame.getBoard());
     }

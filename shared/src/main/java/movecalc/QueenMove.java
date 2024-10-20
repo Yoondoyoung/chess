@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class QueenMove extends ChessMoveCalc{
-
     public QueenMove(ChessGame.TeamColor pieceColor, ChessPiece.PieceType type) {
         super(pieceColor, type);
     }
