@@ -1,16 +1,14 @@
 package service;
 
-import dataAccess.*;
+import dataaccess.*;
 import model.AuthData;
 import model.GameData;
 import model.JoinGameRequset;
 import model.UserData;
 import model.result.GameResult;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.UUID;
 
 public class MyService {
     private final UserDAO userDAO;

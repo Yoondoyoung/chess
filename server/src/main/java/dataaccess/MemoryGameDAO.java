@@ -1,9 +1,8 @@
-package dataAccess;
+package dataaccess;
 
 import chess.ChessBoard;
 import chess.ChessGame;
 import model.GameData;
-import model.UserData;
 import model.result.GameResult;
 
 import java.util.*;

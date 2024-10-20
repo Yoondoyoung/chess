@@ -1,7 +1,6 @@
 package service;
 
-import dataAccess.DataAccessException;
-import model.AuthData;
+import dataaccess.DataAccessException;
 import model.GameData;
 import model.JoinGameRequset;
 import model.UserData;
@@ -24,14 +23,14 @@ public class ServiceTest {
 
     // --------------------- Register Tests ---------------------
     @Test
-    public void testRegister_Success() throws DataAccessException {
+    public void testRegisterSuccess() throws DataAccessException {
         UserData user = new UserData("testUser", "password123", "abcd@gmail.com");
         String token = service.register(user);
         assertNotNull(token, "Token should not be null on successful registration.");
     }
 
     @Test
-    public void testRegister_Fail_AlreadyExists() throws DataAccessException {
+    public void testRegisterFailAlreadyExists() throws DataAccessException {
         UserData user = new UserData("testUser", "password123", "abcd@gmail.com");
         service.register(user);
         String token = service.register(user);  // Registering same user again
@@ -40,7 +39,7 @@ public class ServiceTest {
 
     // --------------------- Login Tests ---------------------
     @Test
-    public void testLogin_Success() throws DataAccessException {
+    public void testLoginSuccess() throws DataAccessException {
         UserData user = new UserData("testUser", "password123", "abcd@gmail.com");
         service.register(user);  // Register the user first
         String token = service.login(user);
@@ -48,7 +47,7 @@ public class ServiceTest {
     }
 
     @Test
-    public void testLogin_Fail_WrongPassword() throws DataAccessException {
+    public void testLoginFailWrongPassword() throws DataAccessException {
         UserData user = new UserData("testUser", "password123", "abcd@gmail.com");
         service.register(user);
         UserData wrongPasswordUser = new UserData("testUser", "wrongPassword", "wrong@mail.com");
@@ -57,7 +56,7 @@ public class ServiceTest {
     }
 
     @Test
-    public void testLogin_Fail_UserNotFound() throws DataAccessException {
+    public void testLoginFailUserNotFound() throws DataAccessException {
         UserData user = new UserData("nonExistentUser", "password123", "test@mail.com");
         String token = service.login(user);
         assertNull(token, "Login for non-existent user should return null.");
@@ -65,7 +64,7 @@ public class ServiceTest {
 
     // --------------------- Logout Tests ---------------------
     @Test
-    public void testLogout_Success() throws Exception {
+    public void testLogoutSuccess() throws Exception {
         UserData user = new UserData("testUser", "password123", "abcd@gmail.com");
         String token = service.register(user);
         service.logout(token);  // Logout using the token
@@ -73,7 +72,7 @@ public class ServiceTest {
     }
 
     @Test
-    public void testLogout_Fail_InvalidToken() {
+    public void testLogoutFailInvalidToken() {
         Exception exception = assertThrows(Exception.class, () -> {
             service.logout("invalidToken");
         });
@@ -82,7 +81,7 @@ public class ServiceTest {
 
     // --------------------- Create Game Tests ---------------------
     @Test
-    public void testCreateGame_Success() throws Exception {
+    public void testCreateGameSuccess() throws Exception {
         String gameName = "Test Game";
         int gameID = service.createGame(gameName);
         assertTrue(gameID > 0, "Game ID should be greater than 0.");
@@ -90,7 +89,7 @@ public class ServiceTest {
 
     // --------------------- Join Game Tests ---------------------
     @Test
-    public void testJoinGame_Success() throws Exception {
+    public void testJoinGameSuccess() throws Exception {
         String gameName = "Test Game";
         int gameID = service.createGame(gameName);
 
@@ -105,7 +104,7 @@ public class ServiceTest {
     }
 
     @Test
-    public void testJoinGame_Fail_AlreadyTaken() throws Exception {
+    public void testJoinGameFailAlreadyTaken() throws Exception {
         String gameName = "Test Game";
         int gameID = service.createGame(gameName);
 
@@ -124,7 +123,7 @@ public class ServiceTest {
     }
 
     @Test
-    public void testJoinGame_Fail_InvalidColor() throws Exception {
+    public void testJoinGameFailInvalidColor() throws Exception {
         String gameName = "Test Game";
         int gameID = service.createGame(gameName);
 
@@ -140,7 +139,7 @@ public class ServiceTest {
 
     // --------------------- List Games Tests ---------------------
     @Test
-    public void testListGames_Success() throws Exception {
+    public void testListGamesSuccess() throws Exception {
         String gameName = "Test Game";
         int gameID = service.createGame(gameName);
 
@@ -152,7 +151,7 @@ public class ServiceTest {
     }
 
     @Test
-    public void testListGames_Fail_InvalidToken() {
+    public void testListGamesFailInvalidToken() {
         DataAccessException exception = assertThrows(DataAccessException.class, () -> {
             service.listGames("invalidToken");
         });

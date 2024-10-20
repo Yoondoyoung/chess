@@ -1,7 +1,6 @@
-package dataAccess;
+package dataaccess;
 
 import model.GameData;
-import model.UserData;
 import model.result.GameResult;
 
 import java.util.List;
