@@ -203,6 +203,7 @@ public class StandardAPITests {
         TestListResult listResult = serverFacade.listGames(existingAuth);
 
         Assertions.assertEquals(1, listResult.getGames().length);
+        System.out.println(listResult.getGames()[0]);
         Assertions.assertEquals(existingUser.getUsername(), listResult.getGames()[0].getWhiteUsername());
         Assertions.assertNull(listResult.getGames()[0].getBlackUsername());
     }
@@ -357,6 +358,7 @@ public class StandardAPITests {
                 "Authtoken returned by login matched authtoken from prior register");
         Assertions.assertNotEquals(existingAuth, loginTwo.getAuthToken(),
                 "Authtoken returned by login matched authtoken from prior register");
+        System.out.println("Login one : "+ loginOne.getAuthToken() + "  Login two : " + loginTwo.getAuthToken());
         Assertions.assertNotEquals(loginOne.getAuthToken(), loginTwo.getAuthToken(),
                 "Authtoken returned by login matched authtoken from prior login");
 

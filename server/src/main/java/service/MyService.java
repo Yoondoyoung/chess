@@ -5,6 +5,7 @@ import model.AuthData;
 import model.GameData;
 import model.JoinGameRequset;
 import model.UserData;
+import model.result.GameResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +53,7 @@ public class MyService {
             System.out.println("Login : "+userDAO.getUser(userData.username()));
             UserData exis = userDAO.getUser(userData.username());
             if(exis.password().equals(userData.password())){
+                authDAO.insertAuth(authDAO.createAuth(exis.username()));
                 return authDAO.getAuth(userData.username()).authToken();
             }
         }
@@ -78,7 +80,7 @@ public class MyService {
     public void joinGame(JoinGameRequset joinGameRequset, String authToken) throws Exception{
         System.out.println(joinGameRequset.gameID());
         GameData game = gameDAO.getGame(joinGameRequset.gameID());
-        String username = "temp";
+        String username = authDAO.getAuth(authToken).username();
 
         if(Objects.equals(joinGameRequset.playerColor(), "WHITE")){
             if(game.whiteUserName() == null){
@@ -99,8 +101,8 @@ public class MyService {
         }
     }
 
-    public List<GameData> listGames(String authToken) throws Exception{
-        List<GameData> gameList;
+    public List<GameResult> listGames(String authToken) throws Exception{
+        List<GameResult> gameList;
         if(isValidAuth(authToken)){
             gameList = gameDAO.getGameList();
         }else{

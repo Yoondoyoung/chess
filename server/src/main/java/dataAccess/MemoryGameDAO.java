@@ -4,6 +4,7 @@ import chess.ChessBoard;
 import chess.ChessGame;
 import model.GameData;
 import model.UserData;
+import model.result.GameResult;
 
 import java.util.*;
 import java.util.random.RandomGenerator;
@@ -16,11 +17,15 @@ public class MemoryGameDAO implements GameDAO{
     }
 
     @Override
-    public List<GameData> getGameList() throws DataAccessException {
-        List<GameData> gameDataList = new ArrayList<>();
+    public List<GameResult> getGameList() throws DataAccessException {
+        List<GameResult> gameDataList = new ArrayList<>();
+        GameResult result;
+        GameData gameData;
         for(int game : gameStore.keySet()){
             System.out.println(gameStore.get(game));
-            gameDataList.add(gameStore.get(game));
+            gameData = gameStore.get(game);
+            result = new GameResult(gameData.gameID(), gameData.gameName(), gameData.whiteUserName(), gameData.blackUserName());
+            gameDataList.add(result);
         }
         return gameDataList;
     }

@@ -31,7 +31,6 @@ public class MemoryAuthDAO implements AuthDAO{
     @Override
     public void deleteAuth(String username) throws DataAccessException {
         authStore.remove(username);
-
     }
 
     @Override
