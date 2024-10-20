@@ -69,8 +69,6 @@ public class StandardAPITests {
     @Order(2)
     @DisplayName("Normal User Login")
     public void successLogin() {
-        TestUser loginRequest = new TestUser(existingUser.getUsername(), existingUser.getPassword());
-
         TestAuthResult loginResult = serverFacade.login(existingUser);
 
         assertHttpOk(loginResult);
