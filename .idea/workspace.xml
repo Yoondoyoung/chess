@@ -6,18 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="40362976-303f-48a0-9bb7-bd43d5c088bd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/server/Handler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/server/Handler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/shared/chess/ChessBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shared/chess/ChessBoard.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/shared/chess/ChessGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shared/chess/ChessGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/shared/movecalc/KingMove.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shared/movecalc/KingMove.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/GameDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/GameDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/shared/movecalc/PawnMove.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shared/movecalc/PawnMove.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/MemoryGameDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/MemoryGameDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/MemoryUserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/MemoryUserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/Handler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/Handler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/chess/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/chess/ChessBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/chess/ChessGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/chess/ChessGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/movecalc/KingMove.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/movecalc/KingMove.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/movecalc/KnightMove.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/movecalc/KnightMove.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/movecalc/PawnMove.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/movecalc/PawnMove.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +30,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -61,6 +57,7 @@
     "JUnit.ChessBoardTests.executor": "Run",
     "JUnit.ChessMoveTests.executor": "Run",
     "JUnit.ChessPositionTests.executor": "Run",
+    "JUnit.DatabaseTests.executor": "Run",
     "JUnit.FullGameTest.executor": "Run",
     "JUnit.GameStatusTests.executor": "Run",
     "JUnit.GameStatusTests.noGameStatuses.executor": "Debug",
@@ -96,7 +93,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "run.code.analysis.last.selected.profile": "pProject Default",
@@ -108,6 +105,7 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/server/src/test/java/passoff/server" />
       <recent name="$PROJECT_DIR$/server/src/main/resources" />
+      <recent name="$PROJECT_DIR$/server/src/main/java/dataaccess" />
       <recent name="$PROJECT_DIR$/server/src/test/java" />
       <recent name="$PROJECT_DIR$/server/src/main/java" />
     </key>
@@ -169,11 +167,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.index.html" />
         <item itemvalue="JUnit.StandardAPITests.badAuthCreate" />
         <item itemvalue="JUnit.StandardAPITests.goodCreate" />
         <item itemvalue="JUnit.StandardAPITests.failLogout" />
         <item itemvalue="JavaScript Debug.index.html (1)" />
-        <item itemvalue="JavaScript Debug.index.html" />
       </list>
     </recent_temporary>
   </component>
@@ -192,7 +190,8 @@
       <workItem from="1727026202214" duration="18587000" />
       <workItem from="1727290876216" duration="21000" />
       <workItem from="1727290913157" duration="9788000" />
-      <workItem from="1727650845151" duration="93028000" />
+      <workItem from="1727650845151" duration="103146000" />
+      <workItem from="1730210720872" duration="2770000" />
     </task>
     <servers />
   </component>
