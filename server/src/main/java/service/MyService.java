@@ -6,6 +6,7 @@ import model.GameData;
 import model.JoinGameRequset;
 import model.UserData;
 import model.result.GameResult;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.util.List;
 import java.util.Objects;
@@ -47,14 +48,14 @@ public class MyService {
     }
 
     public String login(UserData userData) throws DataAccessException {
-        if(userDAO.getUser(userData.username()) != null){
-            UserData exis = userDAO.getUser(userData.username());
-            if(exis.password().equals(userData.password())){
-                authDAO.insertAuth(authDAO.createAuth(exis.username()));
-                return authDAO.getAuth(userData.username());
-            }
+        String hashedPassword = userDAO.getPassword(userData.username());
+        if (BCrypt.checkpw(userData.password(), hashedPassword)){
+            AuthData auth = authDAO.createAuth(userData.username());
+            authDAO.insertAuth(auth);
+            return auth.authToken();
+        } else {
+            throw new DataAccessException("Error: unauthorized");
         }
-        return null;
     }
 
     public void logout(String authToken) throws Exception {
@@ -76,7 +77,7 @@ public class MyService {
 
     public void joinGame(JoinGameRequset joinGameRequset, String authToken) throws Exception{
         GameData game = gameDAO.getGame(joinGameRequset.gameID());
-        String username = userDAO.getUser(authToken).username();
+        String username = authDAO.getUser(authToken);
 
         if(Objects.equals(joinGameRequset.playerColor(), "WHITE")){
             if(game.whiteUserName() == null){
