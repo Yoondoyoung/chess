@@ -51,7 +51,7 @@ public class MyService {
             UserData exis = userDAO.getUser(userData.username());
             if(exis.password().equals(userData.password())){
                 authDAO.insertAuth(authDAO.createAuth(exis.username()));
-                return authDAO.getAuth(userData.username()).authToken();
+                return authDAO.getAuth(userData.username());
             }
         }
         return null;
@@ -76,7 +76,7 @@ public class MyService {
 
     public void joinGame(JoinGameRequset joinGameRequset, String authToken) throws Exception{
         GameData game = gameDAO.getGame(joinGameRequset.gameID());
-        String username = authDAO.getAuth(authToken).username();
+        String username = userDAO.getUser(authToken).username();
 
         if(Objects.equals(joinGameRequset.playerColor(), "WHITE")){
             if(game.whiteUserName() == null){
