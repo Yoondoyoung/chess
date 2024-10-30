@@ -29,22 +29,49 @@ public class MemoryGameDAO implements GameDAO{
     }
     @Override
     public GameData getGame(int gameId) throws DataAccessException {
-        return gameStore.get(gameId);
+        try (var conn = DatabaseManager.getConnection()) {
+            var statement = "SELECT * FROM games WHERE gameID=?";
+            try (var ps = conn.prepareStatement(statement)) {
+                ps.setInt(1, gameId);
+                try (var rs = ps.executeQuery()) {
+                    if (rs.next()) {
+                        var gameJson = rs.getString("game");
+                        ChessGame game = new Gson().fromJson(gameJson, ChessGame.class);
+                        var whiteUsername = rs.getString("whiteUsername");
+                        var blackUsername = rs.getString("blackUsername");
+                        var gameName = rs.getString("gameName");
+                        return new GameData(gameId, whiteUsername, blackUsername, gameName, game);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            throw new DataAccessException(String.format("Unable to read data: %s", e.getMessage()));
+        }
+        return null;
     }
 
     @Override
     public List<GameResult> getGameList() throws DataAccessException {
-        List<GameResult> gameDataList = new ArrayList<>();
-        GameResult result;
-        GameData gameData;
-        for(int game : gameStore.keySet()){
-            System.out.println(gameStore.get(game));
-            gameData = gameStore.get(game);
-            result = new GameResult(gameData.gameID(), gameData.gameName(), gameData.whiteUserName(), gameData.blackUserName());
-            gameDataList.add(result);
+        try (var conn = DatabaseManager.getConnection()) {
+            var statement = "SELECT * FROM games";
+            try (var ps = conn.prepareStatement(statement)) {
+                try (var rs = ps.executeQuery()) {
+                    List<GameResult> games = new ArrayList<>();
+                    while (rs.next()) {
+                        int gameID = rs.getInt("gameID");
+                        String whiteUsername = rs.getString("whiteUsername");
+                        String blackUsername = rs.getString("blackUsername");
+                        String gameName = rs.getString("gameName");
+                        games.add(new GameResult(gameID, gameName, whiteUsername, blackUsername));
+                    }
+                    return games;
+                }
+            }
+        } catch (Exception e) {
+            throw new DataAccessException(String.format("Unable to read data: %s", e.getMessage()));
         }
-        return gameDataList;
     }
+
 
     @Override
     public GameData createGame(String gameName) throws DataAccessException {
@@ -53,19 +80,38 @@ public class MemoryGameDAO implements GameDAO{
         board.resetBoard();
         newGame.setBoard(board);
         System.out.println("CreateGame");
-        int gameID = RandomGenerator.getDefault().nextInt(100);
+        int gameID = 1;
         GameData game = new GameData(gameID, null, null, gameName, newGame);
-        gameStore.put(gameID, game);
         var statement = "INSERT INTO games (whiteUsername, blackUsername, gameName, game) VALUES (?, ?, ?, ?)";
         String gameJson = new Gson().toJson(game.game());
         DatabaseManager.executeUpdate(statement, game.whiteUserName(), game.blackUserName(), game.gameName(), gameJson);
-        return new GameData(gameID, null, null, gameName, newGame);
+        return new GameData(gameID, null, null, game.gameName(), game.game());
     }
 
 
     @Override
     public void updateGame(GameData game, String color) throws DataAccessException {
-        gameStore.put(game.gameID(), game);
+        String blankUsername;
+        String username;
+        if (color.equals("BLACK")) {
+            blankUsername = "blackUsername";
+            username = game.blackUserName();
+        } else if (color.equals("WHITE")) {
+            blankUsername = "whiteUsername";
+            username = game.whiteUserName();
+        } else {
+            throw new DataAccessException("Bad color");
+        }
+        try (var conn = DatabaseManager.getConnection()) {
+            var statement = "UPDATE games SET " + blankUsername + " = ? WHERE gameID = ?";
+            try (var ps = conn.prepareStatement(statement)) {
+                ps.setString(1, username);
+                ps.setInt(2, game.gameID());
+                int rowsAffected = ps.executeUpdate();
+            }
+        } catch (Exception e) {
+            throw new DataAccessException(String.format("Unable to read data: %s", e.getMessage()));
+        }
     }
 
     @Override
