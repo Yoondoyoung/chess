@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40362976-303f-48a0-9bb7-bd43d5c088bd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataAccess/MemoryUserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataAccess/MemoryUserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/test/java/dataAccess/UserDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/java/dataAccess/UserDAOTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataAccess/MemoryGameDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataAccess/MemoryGameDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +60,8 @@
     "JUnit.KingMoveTests.executor": "Run",
     "JUnit.KnightMoveTests.executor": "Run",
     "JUnit.MakeMoveTests.executor": "Run",
+    "JUnit.MemoryGameDAOTest.executor": "Run",
+    "JUnit.MemoryUserDAOTest.executor": "Run",
     "JUnit.PawnMoveTests.executor": "Run",
     "JUnit.QueenMoveTests.executor": "Run",
     "JUnit.RookMoveTests.executor": "Run",
@@ -193,7 +195,7 @@
       <workItem from="1727290876216" duration="21000" />
       <workItem from="1727290913157" duration="9788000" />
       <workItem from="1727650845151" duration="103146000" />
-      <workItem from="1730210720872" duration="10676000" />
+      <workItem from="1730210720872" duration="11250000" />
     </task>
     <servers />
   </component>

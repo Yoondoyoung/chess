@@ -74,6 +74,9 @@ public class MemoryGameDAO implements GameDAO{
 
     @Override
     public GameData createGame(String gameName) throws DataAccessException {
+        if(gameName.isEmpty()){
+            throw new DataAccessException("Unable to read data");
+        }
         ChessGame newGame = new ChessGame();
         ChessBoard board = newGame.getBoard();
         board.resetBoard();
