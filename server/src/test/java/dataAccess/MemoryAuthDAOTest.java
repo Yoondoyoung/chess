@@ -117,7 +117,7 @@ class MemoryAuthDAOTest {
 
     @Test
     void testClearNegative() throws DataAccessException {
-        authDAO.clear(); // Clear on an already empty database
+        authDAO.clear();
         assertNull(authDAO.getAuth("nonExistentUser"), "Auth token should be null if database is already empty");
     }
 
