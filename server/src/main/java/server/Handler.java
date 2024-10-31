@@ -76,11 +76,13 @@ public class Handler {
             res.status(400); // Bad request for malformed JSON
             return gson.toJson(new FailureResult("Error: invalid JSON"));
         }
-        auth = service.login(userData);
-        if (auth == null) {
+        try{
+            auth = service.login(userData);
+        }catch (DataAccessException e){
             res.status(401); // Unauthorized if login fails
             return gson.toJson(new FailureResult("Error: unauthorized"));
         }
+
 
         // Successful login
         res.status(200);

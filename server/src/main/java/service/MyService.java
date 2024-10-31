@@ -49,13 +49,17 @@ public class MyService {
 
     public String login(UserData userData) throws DataAccessException {
         String hashedPassword = userDAO.getPassword(userData.username());
-        if (BCrypt.checkpw(userData.password(), hashedPassword)){
-            AuthData auth = authDAO.createAuth(userData.username());
-            authDAO.insertAuth(auth);
-            return auth.authToken();
-        } else {
-            throw new DataAccessException("Error: unauthorized");
+        if(hashedPassword != null){
+            if (BCrypt.checkpw(userData.password(), hashedPassword)){
+                System.out.println("Login Successes");
+                AuthData auth = authDAO.createAuth(userData.username());
+                authDAO.insertAuth(auth);
+                return auth.authToken();
+            } else {
+                throw new DataAccessException("Error: unauthorized");
+            }
         }
+        throw new DataAccessException("Error: unauthorized");
     }
 
     public void logout(String authToken) throws Exception {
