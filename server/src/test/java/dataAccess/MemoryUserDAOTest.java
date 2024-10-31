@@ -21,7 +21,7 @@ class MemoryUserDAOTest {
     @Test
     void testGetUserPositive() throws DataAccessException {
         UserData user = new UserData("john_doe", "password123", "john@example.com");
-        userDAO.createUser(user); // Pre-condition: create the user
+        userDAO.createUser(user);
 
         UserData retrievedUser = userDAO.getUser("john_doe");
         assertNotNull(retrievedUser, "User should be retrieved");
@@ -89,7 +89,7 @@ class MemoryUserDAOTest {
         userDAO.createUser(user1);
         userDAO.createUser(user2);
 
-        userDAO.clear(); // Clear all users
+        userDAO.clear();
 
         assertNull(userDAO.getUser("user1"), "User1 should be removed after clear");
         assertNull(userDAO.getUser("user2"), "User2 should be removed after clear");
