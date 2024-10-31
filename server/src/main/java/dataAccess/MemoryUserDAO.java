@@ -4,6 +4,8 @@ import model.UserData;
 import org.mindrot.jbcrypt.BCrypt;
 
 public class MemoryUserDAO implements UserDAO{
+
+    private static MemoryUserDAO instance;
     public static synchronized UserDAO getInstance() throws DataAccessException {
         if (instance == null){
             instance = new MemoryUserDAO();
