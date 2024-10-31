@@ -1,12 +1,15 @@
-package dataaccess;
+package dataAccess;
 
 import model.UserData;
 import org.mindrot.jbcrypt.BCrypt;
 
-import java.util.Map;
-import java.util.HashMap;
 public class MemoryUserDAO implements UserDAO{
-    private final Map<String, UserData> userStore = new HashMap<>();
+    public static synchronized UserDAO getInstance() throws DataAccessException {
+        if (instance == null){
+            instance = new MemoryUserDAO();
+        }
+        return instance;
+    }
 
     public MemoryUserDAO() throws DataAccessException {
         String[] createStatements = {

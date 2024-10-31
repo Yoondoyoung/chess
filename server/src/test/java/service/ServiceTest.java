@@ -1,6 +1,6 @@
 package service;
 
-import dataaccess.DataAccessException;
+import dataAccess.DataAccessException;
 import model.GameData;
 import model.JoinGameRequset;
 import model.UserData;

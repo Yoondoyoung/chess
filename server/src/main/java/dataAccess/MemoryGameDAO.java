@@ -1,4 +1,4 @@
-package dataaccess;
+package dataAccess;
 
 import chess.ChessBoard;
 import chess.ChessGame;
@@ -7,7 +7,6 @@ import model.GameData;
 import model.result.GameResult;
 
 import java.util.*;
-import java.util.random.RandomGenerator;
 
 public class MemoryGameDAO implements GameDAO{
     private final Map<Integer, GameData> gameStore = new HashMap<>();
