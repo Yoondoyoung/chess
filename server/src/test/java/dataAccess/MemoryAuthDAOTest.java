@@ -84,7 +84,7 @@ class MemoryAuthDAOTest {
     @Test
     void testDeleteAuthNegative() {
         Exception exception = assertThrows(DataAccessException.class, () -> {
-            authDAO.deleteAuth("invalidToken"); // Token does not exist
+            authDAO.deleteAuth("invalidToken");
         });
         assertTrue(exception.getMessage().contains("auth doesn't exist"),
                 "Exception should indicate non-existent auth token");
