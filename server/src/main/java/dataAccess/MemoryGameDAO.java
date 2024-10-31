@@ -87,7 +87,9 @@ public class MemoryGameDAO implements GameDAO{
         var statement = "INSERT INTO games (whiteUsername, blackUsername, gameName, game) VALUES (?, ?, ?, ?)";
         String gameJson = new Gson().toJson(game.game());
         DatabaseManager.executeUpdate(statement, game.whiteUserName(), game.blackUserName(), game.gameName(), gameJson);
-        return new GameData(gameID, null, null, game.gameName(), game.game());
+
+        return new GameData(getGame(gameName).gameID(), null, null, game.gameName(), game.game());
+
     }
 
 
@@ -120,5 +122,28 @@ public class MemoryGameDAO implements GameDAO{
     public void clear() throws DataAccessException {
         String[] statement = new String[]{"TRUNCATE games"};
         DatabaseManager.configureDatabase(statement);
+    }
+
+    public GameData getGame(String gameName) throws DataAccessException {
+        try (var conn = DatabaseManager.getConnection()) {
+            var statement = "SELECT * FROM games WHERE gameName=?";
+            try (var ps = conn.prepareStatement(statement)) {
+                ps.setString(1, gameName);
+                try (var rs = ps.executeQuery()) {
+                    if (rs.next()) {
+                        var gameJson = rs.getString("game");
+                        var gameId = rs.getInt("gameID");
+                        ChessGame game = new Gson().fromJson(gameJson, ChessGame.class);
+                        var whiteUsername = rs.getString("whiteUsername");
+                        var blackUsername = rs.getString("blackUsername");
+
+                        return new GameData(gameId, whiteUsername, blackUsername, gameName, game);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            throw new DataAccessException(String.format("Unable to read data: %s", e.getMessage()));
+        }
+        return null;
     }
 }

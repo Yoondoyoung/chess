@@ -7,6 +7,6 @@ public interface UserDAO {
     public void createUser(UserData user) throws DataAccessException;
 
     public void clear() throws DataAccessException;
+    public String getPassword(String username) throws DataAccessException;
 
-    String getPassword(String username) throws DataAccessException;
 }

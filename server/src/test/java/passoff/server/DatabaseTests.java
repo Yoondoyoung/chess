@@ -7,6 +7,7 @@ import server.Server;
 
 import java.lang.reflect.Method;
 import java.sql.*;
+import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
