@@ -13,7 +13,7 @@ class MemoryAuthDAOTest {
     @BeforeEach
     void setUp() throws DataAccessException {
         authDAO = new MemoryAuthDAO();
-        authDAO.clear(); // Ensure a clean start before each test
+        authDAO.clear();
     }
 
     // 1. Test for createAuth
