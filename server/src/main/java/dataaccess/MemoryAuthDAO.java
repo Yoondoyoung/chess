@@ -25,6 +25,9 @@ public class MemoryAuthDAO implements AuthDAO {
 
     @Override
     public AuthData createAuth(String username) throws DataAccessException {
+        if(username == null){
+            throw new DataAccessException("Unable to read data");
+        }
         String authToken = UUID.randomUUID().toString();
         AuthData authData = new AuthData(username, authToken);
         authStore.put(authToken, authData);
@@ -51,6 +54,9 @@ public class MemoryAuthDAO implements AuthDAO {
 
     @Override
     public void insertAuth(AuthData authData) throws DataAccessException {
+        if(authData.authToken() == null || authData.username() == null){
+            throw new DataAccessException("Unable to read data");
+        }
         var statement = "INSERT INTO auth (username, authToken) VALUES (?, ?)";
         var id = DatabaseManager.executeUpdate(statement, authData.username(), authData.authToken());
     }
