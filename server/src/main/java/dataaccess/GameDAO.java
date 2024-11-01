@@ -1,4 +1,4 @@
-package dataAccess;
+package dataaccess;
 
 import model.GameData;
 import model.result.GameResult;

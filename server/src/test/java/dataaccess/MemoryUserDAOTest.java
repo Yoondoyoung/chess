@@ -1,7 +1,5 @@
-package dataAccess;
+package dataaccess;
 
-import dataAccess.MemoryUserDAO;
-import dataAccess.DataAccessException;
 import model.UserData;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
