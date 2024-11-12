@@ -2,7 +2,7 @@ package ui;
 
 import chess.ChessGame;
 import com.google.gson.Gson;
-import ui.websocket.*;
+import ui.websocket.NotificationHandler;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 import static ui.EscapeSequences.*;
 
-public class Repl implements NotificationHandler{
+public class Repl implements NotificationHandler {
     private final Client client;
 
     public Repl(String serverUrl) throws IOException {

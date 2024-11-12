@@ -1,10 +1,14 @@
 package ui;
 
-import chess.*;
+import chess.ChessGame;
+import chess.ChessMove;
+import chess.ChessPosition;
+import chess.ChessPiece;
 import model.*;
 import model.result.GameResult;
 import model.result.GameListResult;
 import model.result.UserResult;
+import model.GameNameResponse;
 import ui.websocket.NotificationHandler;
 
 import static java.lang.Character.getNumericValue;

@@ -3,11 +3,10 @@ package ui;
 import chess.ChessMove;
 import model.*;
 import model.result.GameIdResult;
-import model.result.GameResult;
 import model.result.GameListResult;
 import model.result.UserResult;
 import ui.websocket.NotificationHandler;
-import ui.websocket.SocketFacade;
+import ui.websocket.WebSocketFacade;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -18,11 +17,11 @@ import static chess.ChessGame.TeamColor.WHITE;
 public class ServerFacade {
 
     private final ClientCommunicator communicator;
-    private final SocketFacade ws;
+    private final WebSocketFacade ws;
 
     public ServerFacade(String url, NotificationHandler notificationHandler) throws IOException {
         communicator = new ClientCommunicator(url);
-        ws = new SocketFacade(url, 8080, notificationHandler);
+        ws = new WebSocketFacade(url, notificationHandler);
     }
 
     public UserResult registerUser(UserData user) throws IOException {
