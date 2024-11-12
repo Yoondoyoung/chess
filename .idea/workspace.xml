@@ -5,28 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40362976-303f-48a0-9bb7-bd43d5c088bd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/248b0d71-abb9-4020-88cf-feb951d74409.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/248b0d71-abb9-4020-88cf-feb951d74409.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/dataAccess/AuthDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/dataAccess/AuthDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/dataAccess/DataAccessException.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/dataAccess/DataAccessException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/dataAccess/DatabaseManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/dataAccess/DatabaseManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/dataAccess/GameDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/dataAccess/GameDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/dataAccess/MemoryAuthDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/dataAccess/MemoryAuthDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/dataAccess/MemoryGameDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/dataAccess/MemoryGameDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/dataAccess/MemoryUserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/dataAccess/MemoryUserDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/dataAccess/UserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/dataAccess/UserDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/server/Handler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/server/Handler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/service/MyService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/service/MyService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/server/dataAccess/MemoryAuthDAOTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/server/dataAccess/MemoryAuthDAOTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/server/dataAccess/MemoryGameDAOTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/server/dataAccess/MemoryGameDAOTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/server/dataAccess/MemoryUserDAOTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/server/dataAccess/MemoryUserDAOTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/server/passoff/server/DatabaseTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/server/passoff/server/DatabaseTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/server/service/ServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/server/service/ServiceTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/dataaccess/MemoryAuthDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/dataaccess/MemoryAuthDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared/src/main/java/model/result/UserResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/model/result/UserResult.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExportToHTMLSettings">
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/exportToHTML" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -82,6 +73,7 @@
     "JUnit.QueenMoveTests.executor": "Run",
     "JUnit.RookMoveTests.executor": "Run",
     "JUnit.SQLUserDAOTest.executor": "Run",
+    "JUnit.ServerFacadeTests.executor": "Run",
     "JUnit.ServiceTest.executor": "Run",
     "JUnit.StandardAPITests.badAuthCreate.executor": "Run",
     "JUnit.StandardAPITests.executor": "Run",
@@ -102,7 +94,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/yoon/Desktop/cs240/chess/server/src/test/java/passoff/server",
+    "last_opened_file_path": "/Users/yoon/Desktop/cs240/chess/client/src/test/java/client",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -112,7 +104,7 @@
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "terminal",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -123,14 +115,21 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/src/test/java/client" />
+      <recent name="$PROJECT_DIR$/client/src/main/java/ui" />
       <recent name="$PROJECT_DIR$/server/src/test/java/passoff/server" />
       <recent name="$PROJECT_DIR$/server/src/main/resources" />
       <recent name="$PROJECT_DIR$/server/src/main/java/dataaccess" />
-      <recent name="$PROJECT_DIR$/server/src/test/java" />
-      <recent name="$PROJECT_DIR$/server/src/main/java" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="client" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="StandardAPITests.badAuthCreate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="server" />
       <extension name="coverage">
@@ -142,22 +141,6 @@
       <option name="PACKAGE_NAME" value="passoff.server" />
       <option name="MAIN_CLASS_NAME" value="passoff.server.StandardAPITests" />
       <option name="METHOD_NAME" value="badAuthCreate" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="StandardAPITests.failLogout" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="server" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="passoff.server.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="passoff.server" />
-      <option name="MAIN_CLASS_NAME" value="passoff.server.StandardAPITests" />
-      <option name="METHOD_NAME" value="failLogout" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -187,11 +170,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JavaScript Debug.index.html (1)" />
         <item itemvalue="JavaScript Debug.index.html" />
         <item itemvalue="JUnit.StandardAPITests.badAuthCreate" />
         <item itemvalue="JUnit.StandardAPITests.goodCreate" />
-        <item itemvalue="JUnit.StandardAPITests.failLogout" />
-        <item itemvalue="JavaScript Debug.index.html (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -211,7 +194,9 @@
       <workItem from="1727290876216" duration="21000" />
       <workItem from="1727290913157" duration="9788000" />
       <workItem from="1727650845151" duration="103146000" />
-      <workItem from="1730210720872" duration="22538000" />
+      <workItem from="1730210720872" duration="22710000" />
+      <workItem from="1730862316713" duration="8123000" />
+      <workItem from="1731383138063" duration="541000" />
     </task>
     <servers />
   </component>
