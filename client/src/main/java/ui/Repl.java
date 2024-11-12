@@ -1,6 +1,8 @@
 package ui;
 
-import ui.websocket.NotificationHandler;
+import chess.ChessGame;
+import com.google.gson.Gson;
+import ui.websocket.*;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -8,7 +10,7 @@ import java.util.Scanner;
 
 import static ui.EscapeSequences.*;
 
-public class Repl extends NotificationHandler {
+public class Repl implements NotificationHandler{
     private final Client client;
 
     public Repl(String serverUrl) throws IOException {
@@ -42,5 +44,21 @@ public class Repl extends NotificationHandler {
                 System.out.println(client.inputUI());
             }
         }
+    }
+
+    public void notify(Notification notification) {
+        System.out.println(SET_TEXT_COLOR_GREEN + SET_BG_COLOR_BLACK + "\n" + notification.getMessage());
+        client.printPrompt();
+    }
+
+    public void loadGame(LoadGame loadGame) {
+        client.setBoard(new Gson().fromJson(String.valueOf(loadGame.game), ChessGame.class));
+        client.drawGameUI();
+        client.printPrompt();
+    }
+
+    public void error(ErrorMessage error){
+        System.out.println(SET_TEXT_COLOR_BLUE + SET_BG_COLOR_BLACK + error.getMessage());
+        client.printPrompt();
     }
 }

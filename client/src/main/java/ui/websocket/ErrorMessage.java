@@ -1,7 +1,8 @@
 package ui.websocket;
 
 public class ErrorMessage {
-        private String message;
+    private final ServerMessageType serverMessageType;
+    private String message;
         public ErrorMessage(String message) {
             this.serverMessageType = ServerMessageType.ERROR;
             this.message = message;

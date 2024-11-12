@@ -9,61 +9,6 @@ import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-// Message types for server messages
-enum ServerMessageType {
-    LOAD_GAME,
-    ERROR,
-    NOTIFICATION
-}
-
-// Base class for server messages
-class ServerMessage {
-    protected ServerMessageType serverMessageType;
-
-    public ServerMessageType getServerMessageType() {
-        return serverMessageType;
-    }
-}
-
-
-
-class LoadGame extends ServerMessage {
-    private int gameID;
-    private ChessGame game;
-
-    public LoadGame(int gameID, ChessGame game) {
-        this.serverMessageType = ServerMessageType.LOAD_GAME;
-        this.gameID = gameID;
-        this.game = game;
-    }
-
-    public int getGameID() { return gameID; }
-    public ChessGame getGame() { return game; }
-}
-
-class Notification extends ServerMessage {
-    private String message;
-
-    public Notification(String message) {
-        this.serverMessageType = ServerMessageType.NOTIFICATION;
-        this.message = message;
-    }
-
-    public String getMessage() { return message; }
-}
-
-
-
-
-class MakeMove extends UserGameCommand {
-    private ChessMove move;
-
-    public MakeMove(String authToken, int gameID, ChessMove move) {
-        super(authToken, gameID, "MAKE_MOVE");
-        this.move = move;
-    }
-}
-
 
 // Main SocketFacade class
 import java.io.*;

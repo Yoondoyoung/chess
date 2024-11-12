@@ -7,7 +7,7 @@ import model.result.GameResult;
 import model.result.GameListResult;
 import model.result.UserResult;
 import ui.websocket.NotificationHandler;
-import ui.websocket.WebSocketFacade;
+import ui.websocket.SocketFacade;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -18,11 +18,11 @@ import static chess.ChessGame.TeamColor.WHITE;
 public class ServerFacade {
 
     private final ClientCommunicator communicator;
-    private final WebSocketFacade ws;
+    private final SocketFacade ws;
 
     public ServerFacade(String url, NotificationHandler notificationHandler) throws IOException {
         communicator = new ClientCommunicator(url);
-        ws = new WebSocketFacade(url, notificationHandler);
+        ws = new SocketFacade(url, 8080, notificationHandler);
     }
 
     public UserResult registerUser(UserData user) throws IOException {
