@@ -52,14 +52,7 @@ class Notification extends ServerMessage {
     public String getMessage() { return message; }
 }
 
-class JoinPlayer extends UserGameCommand {
-    private ChessGame.TeamColor teamColor;
 
-    public JoinPlayer(String authToken, int gameID, ChessGame.TeamColor teamColor) {
-        super(authToken, gameID, "JOIN_PLAYER");
-        this.teamColor = teamColor;
-    }
-}
 
 
 class MakeMove extends UserGameCommand {
@@ -68,18 +61,6 @@ class MakeMove extends UserGameCommand {
     public MakeMove(String authToken, int gameID, ChessMove move) {
         super(authToken, gameID, "MAKE_MOVE");
         this.move = move;
-    }
-}
-
-class Leave extends UserGameCommand {
-    public Leave(String authToken, int gameID) {
-        super(authToken, gameID, "LEAVE");
-    }
-}
-
-class Resign extends UserGameCommand {
-    public Resign(String authToken, int gameID) {
-        super(authToken, gameID, "RESIGN");
     }
 }
 
