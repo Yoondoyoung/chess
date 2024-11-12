@@ -25,18 +25,7 @@ class ServerMessage {
     }
 }
 
-class ErrorMessage extends ServerMessage {
-    private String message;
 
-    public ErrorMessage(String message) {
-        this.serverMessageType = ServerMessageType.ERROR;
-        this.message = message;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-}
 
 class LoadGame extends ServerMessage {
     private int gameID;
@@ -63,19 +52,6 @@ class Notification extends ServerMessage {
     public String getMessage() { return message; }
 }
 
-// Command classes for client messages
-abstract class UserGameCommand {
-    protected String authToken;
-    protected int gameID;
-    protected String commandType;
-
-    public UserGameCommand(String authToken, int gameID, String commandType) {
-        this.authToken = authToken;
-        this.gameID = gameID;
-        this.commandType = commandType;
-    }
-}
-
 class JoinPlayer extends UserGameCommand {
     private ChessGame.TeamColor teamColor;
 
@@ -85,11 +61,6 @@ class JoinPlayer extends UserGameCommand {
     }
 }
 
-class JoinObserver extends UserGameCommand {
-    public JoinObserver(String authToken, int gameID) {
-        super(authToken, gameID, "JOIN_OBSERVER");
-    }
-}
 
 class MakeMove extends UserGameCommand {
     private ChessMove move;
