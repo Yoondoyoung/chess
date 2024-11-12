@@ -1,5 +1,6 @@
 package service;
 
+import chess.ChessGame;
 import dataaccess.*;
 import model.AuthData;
 import model.GameData;
@@ -75,6 +76,14 @@ public class MyService {
         return game.gameID();
     }
 
+    public GameData getGame(int gameID) throws DataAccessException {
+        return gameDAO.getGame(gameID);
+    }
+
+    public String getUsername(String authToken) throws DataAccessException {
+        return authDAO.getUser(authToken);
+    }
+
     public boolean isValidAuth(String authToken) throws Exception {
         return authDAO.isValidAuth(authToken);
     }
@@ -110,5 +119,32 @@ public class MyService {
             throw new DataAccessException("Error: Bad request");
         }
         return gameList;
+    }
+
+    public boolean checkIsResigned(int gameID) throws DataAccessException {
+        GameData gameData = gameDAO.getGame(gameID);
+        ChessGame game = gameData.game();
+        return game.isResigned();
+    }
+
+    public void setGameResign(int gameID, String username) throws DataAccessException {
+        GameData gameData = gameDAO.getGame(gameID);
+        ChessGame game = gameData.game();
+        checkUserColor(username, gameData);
+        if (checkIsResigned(gameID)) {
+            throw new DataAccessException("Game is resigned.");
+        }
+        game.setResigned(true);
+        gameDAO.updateGame(gameData, checkUserColor(username, gameData).name());
+    }
+
+    public ChessGame.TeamColor checkUserColor(String username, GameData gameData) throws DataAccessException {
+        if ((!Objects.equals(gameData.whiteUserName(), username) && !Objects.equals(gameData.blackUserName(), username))) {
+            throw new DataAccessException("You are not a player and can't resign the game.");
+        } else if ((Objects.equals(gameData.whiteUserName(), username))) {
+            return ChessGame.TeamColor.WHITE;
+        } else {
+            return ChessGame.TeamColor.BLACK;
+        }
     }
 }

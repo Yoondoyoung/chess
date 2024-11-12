@@ -50,16 +50,16 @@ public class WebsocketHandler {
 
             if (playerColor == ChessGame.TeamColor.WHITE ){
                 playerString = "WHITE";
-                if (!Objects.equals(gameData.whiteUsername(), username)) {
+                if (!Objects.equals(gameData.whiteUserName(), username)) {
                     throw new Exception("White color taken.");
-                } else if (Objects.equals(gameData.blackUsername(), username)) {
+                } else if (Objects.equals(gameData.blackUserName(), username)) {
                     throw new Exception("You already joined as the black user.");
                 }
             } else if (playerColor == ChessGame.TeamColor.BLACK) {
                 playerString = "BLACK";
-                if (!Objects.equals(gameData.blackUsername(), username)) {
+                if (!Objects.equals(gameData.blackUserName(), username)) {
                     throw new Exception("White color taken.");
-                } else if (Objects.equals(gameData.whiteUsername(), username)) {
+                } else if (Objects.equals(gameData.whiteUserName(), username)) {
                     throw new Exception("You already joined as the black user.");
                 }
             }
@@ -84,7 +84,7 @@ public class WebsocketHandler {
         var command = new Gson().fromJson(message, JoinObserver.class);
         String authToken = command.getAuthString();
         try {
-            service.testAuth(authToken);
+            service.isValidAuth(authToken);
             String username = service.getUsername(authToken);
             GameData gameData = service.getGame(command.getGameID());
 
