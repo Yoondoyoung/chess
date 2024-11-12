@@ -2,6 +2,7 @@ package ui;
 
 import chess.ChessMove;
 import model.*;
+import model.result.GameIdResult;
 import model.result.GameResult;
 import model.result.GameListResult;
 import model.result.UserResult;
@@ -51,7 +52,7 @@ public class ServerFacade {
 
     public int createGame(String authToken, GameNameResponse gameName) throws IOException {
         var path = "/game";
-        return communicator.makeRequest("POST", path, gameName, authToken, GameIDResult.class).gameID();
+        return communicator.makeRequest("POST", path, gameName, authToken, GameIdResult.class).gameID();
     }
 
     public void joinGame(String authToken, JoinGameData joinGameData) throws IOException {

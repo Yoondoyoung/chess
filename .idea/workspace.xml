@@ -6,10 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="40362976-303f-48a0-9bb7-bd43d5c088bd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/ui/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/ui/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/ui/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/ui/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/ui/Repl.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/ui/Repl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/ui/ServerFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/ui/ServerFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/ui/websocket/NotificationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/ui/websocket/NotificationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/ui/websocket/WebSocketFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/ui/websocket/WebSocketFacade.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +99,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "run.code.analysis.last.selected.profile": "pProject Default",
@@ -196,7 +195,7 @@
       <workItem from="1727650845151" duration="103146000" />
       <workItem from="1730210720872" duration="22710000" />
       <workItem from="1730862316713" duration="8123000" />
-      <workItem from="1731383138063" duration="1233000" />
+      <workItem from="1731383138063" duration="1850000" />
     </task>
     <servers />
   </component>
