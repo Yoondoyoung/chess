@@ -44,9 +44,9 @@ public class ServerFacade {
         communicator.makeRequest("DELETE", path, null, null, null);
     }
 
-    public ListGameResult listGames(String authToken) throws IOException {
+    public GameListResult listGames(String authToken) throws IOException {
         var path = "/game";
-        return communicator.makeRequest("GET", path, null, authToken, ListGameResult.class);
+        return communicator.makeRequest("GET", path, null, authToken, GameListResult.class);
     }
 
     public int createGame(String authToken, GameNameResponse gameName) throws IOException {

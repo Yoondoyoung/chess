@@ -23,7 +23,7 @@ public class Client {
     private String username = null;
     private String authToken = null;
     public State state = State.SIGNEDOUT;
-    private final ChessBoard board = new ChessBoard();
+    private final Board board = new Board();
     private ChessGame.TeamColor teamColor;
     private int gameID;
 
@@ -277,7 +277,7 @@ public class Client {
     private String listGamesUI() throws IOException {
         assertSignedIn();
 
-        ListGameResult gameResult = facade.listGames(this.authToken);
+        GameListResult gameResult = facade.listGames(this.authToken);
         Collection<GameResult> games = gameResult.games();
 
         StringBuilder result = new StringBuilder();

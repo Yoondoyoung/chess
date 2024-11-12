@@ -1,12 +1,14 @@
 package ui;
 
+import ui.websocket.NotificationHandler;
+
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Scanner;
 
 import static ui.EscapeSequences.*;
 
-public class Repl {
+public class Repl extends NotificationHandler {
     private final Client client;
 
     public Repl(String serverUrl) throws IOException {
