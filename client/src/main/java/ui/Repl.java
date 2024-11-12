@@ -3,6 +3,9 @@ package ui;
 import chess.ChessGame;
 import com.google.gson.Gson;
 import ui.websocket.NotificationHandler;
+import websocket.messages.ErrorMessage;
+import websocket.messages.LoadGame;
+import websocket.messages.Notification;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -58,7 +61,7 @@ public class Repl implements NotificationHandler {
     }
 
     public void error(ErrorMessage error){
-        System.out.println(SET_TEXT_COLOR_BLUE + SET_BG_COLOR_BLACK + error.getMessage());
+        System.out.println(SET_TEXT_COLOR_BLUE + SET_BG_COLOR_BLACK + error.getErrorMessage());
         client.printPrompt();
     }
 }

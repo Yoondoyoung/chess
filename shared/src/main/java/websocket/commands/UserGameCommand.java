@@ -26,7 +26,9 @@ public class UserGameCommand {
         CONNECT,
         MAKE_MOVE,
         LEAVE,
-        RESIGN
+        RESIGN,
+        JOIN_OBSERVER,
+        JOIN_PLAYER
     }
 
     public CommandType getCommandType() {
@@ -40,6 +42,7 @@ public class UserGameCommand {
     public Integer getGameID() {
         return gameID;
     }
+
 
     @Override
     public boolean equals(Object o) {
