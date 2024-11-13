@@ -30,11 +30,11 @@ public class ServerFacadeTests {
     @BeforeAll
     public static void init() throws IOException {
         server = new Server();
-        var portNum = 0;
+        var portNum = 8080;
         var port = server.run(portNum);
         System.out.println("Started test HTTP server on " + port);
 
-        String testUrl = "http://localhost:"+portNum;  // Replace with actual server URL if needed
+        String testUrl = "http://localhost:8080";  // Replace with actual server URL if needed
         NotificationHandler notificationHandler = new NotificationHandler() {
             @Override
             public void loadGame(LoadGame game) {
