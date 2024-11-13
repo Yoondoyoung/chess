@@ -115,7 +115,6 @@ public class ServerFacadeTests {
 
         assertTrue(gameId > 0);
         GameListResult result = facade.listGames(login.authToken());
-
         assertNotNull(result);
     }
 
@@ -126,9 +125,24 @@ public class ServerFacadeTests {
         });
     }
 
+    @Test
+    public void createGame_success() throws Exception {
+        var register = facade.registerUser(new UserData("player1", "password", "p1@email.com"));
+        var login = facade.loginUser(new LoginData("player1", "password"));
+        GameNameResponse gameName = new GameNameResponse("Test Game");
+        int gameId = facade.createGame(login.authToken(), gameName);
 
+        assertTrue(gameId > 0);
+    }
 
+    @Test
+    public void createGame_fail() throws Exception {
+        var register = facade.registerUser(new UserData("player1", "password", "p1@email.com"));
+        var login = facade.loginUser(new LoginData("player1", "password"));
 
-
-
+        assertThrows(IOException.class, () -> {
+            facade.createGame(login.authToken(), null);
+        });
+    }
+    
 }
