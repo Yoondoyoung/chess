@@ -6,18 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="40362976-303f-48a0-9bb7-bd43d5c088bd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/ui/websocket/WebSocketFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/ui/websocket/WebSocketFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/client/ui/websocket/WebSocketFacade$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/client/ui/websocket/WebSocketFacade$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/client/ui/websocket/WebSocketFacade$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/client/ui/websocket/WebSocketFacade$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/client/ui/websocket/WebSocketFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/client/ui/websocket/WebSocketFacade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/shared/websocket/commands/UserGameCommand$CommandType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shared/websocket/commands/UserGameCommand$CommandType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/shared/websocket/commands/UserGameCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shared/websocket/commands/UserGameCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/test/java/client/ServerFacadeTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/test/java/client/ServerFacadeTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/service/MyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/service/MyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/websocket/WebSocketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/websocket/WebsocketHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/chess/ChessGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/chess/ChessGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/chess/ChessMove.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/chess/ChessMove.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/chess/ChessPosition.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/chess/ChessPosition.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +50,7 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Application.Main.executor": "Debug",
+    "Application.Main.executor": "Run",
     "Downloaded.Files.Path.Enabled": "true",
     "JUnit.BishopMoveTests.bishopMoveUntilEdge.executor": "Run",
     "JUnit.BishopMoveTests.executor": "Debug",
@@ -138,6 +128,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ServerFacadeTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="client" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="client.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="client" />
+      <option name="MAIN_CLASS_NAME" value="client.ServerFacadeTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="StandardAPITests.badAuthCreate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="server" />
       <extension name="coverage">
@@ -154,22 +159,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StandardAPITests.goodCreate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="server" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="passoff.server.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="passoff.server" />
-      <option name="MAIN_CLASS_NAME" value="passoff.server.StandardAPITests" />
-      <option name="METHOD_NAME" value="goodCreate" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="index.html (1)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/chess/server/src/main/resources/web/index.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
@@ -178,11 +167,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ServerFacadeTests" />
         <item itemvalue="JavaScript Debug.index.html (1)" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JavaScript Debug.index.html" />
         <item itemvalue="JUnit.StandardAPITests.badAuthCreate" />
-        <item itemvalue="JUnit.StandardAPITests.goodCreate" />
       </list>
     </recent_temporary>
   </component>
@@ -204,7 +193,7 @@
       <workItem from="1727650845151" duration="103146000" />
       <workItem from="1730210720872" duration="22710000" />
       <workItem from="1730862316713" duration="8123000" />
-      <workItem from="1731383138063" duration="9514000" />
+      <workItem from="1731383138063" duration="13002000" />
     </task>
     <servers />
   </component>
