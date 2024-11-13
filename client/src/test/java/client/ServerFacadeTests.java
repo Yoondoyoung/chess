@@ -33,7 +33,7 @@ public class ServerFacadeTests {
         var port = server.run(0);
         System.out.println("Started test HTTP server on " + port);
 
-        String testUrl = "http://localhost:0";  // Replace with actual server URL if needed
+        String testUrl = "http://localhost:"+port;  // Replace with actual server URL if needed
         NotificationHandler notificationHandler = new NotificationHandler() {
             @Override
             public void loadGame(LoadGame game) {
