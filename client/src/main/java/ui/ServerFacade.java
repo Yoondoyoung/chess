@@ -24,37 +24,37 @@ public class ServerFacade {
         ws = new WebSocketFacade(url, notificationHandler);
     }
 
-    public UserResult registerUser(UserData user) throws IOException {
+    public UserResult registerUser(UserData user) throws Exception {
         var path = "/user";
         return communicator.makeRequest("POST", path, user, null, UserResult.class);
     }
 
-    public UserResult loginUser(LoginData loginData) throws IOException {
+    public UserResult loginUser(LoginData loginData) throws Exception {
         var path = "/session";
         return communicator.makeRequest("POST", path, loginData, null, UserResult.class);
     }
 
-    public void logoutUser(String authToken) throws IOException {
+    public void logoutUser(String authToken) throws Exception {
         var path = "/session";
         communicator.makeRequest("DELETE", path, null, authToken, null);
     }
 
-    public void deleteAll() throws IOException {
+    public void deleteAll() throws Exception {
         var path = "/db";
         communicator.makeRequest("DELETE", path, null, null, null);
     }
 
-    public GameListResult listGames(String authToken) throws IOException {
+    public GameListResult listGames(String authToken) throws Exception {
         var path = "/game";
         return communicator.makeRequest("GET", path, null, authToken, GameListResult.class);
     }
 
-    public int createGame(String authToken, GameNameResponse gameName) throws IOException {
+    public int createGame(String authToken, GameNameResponse gameName) throws Exception {
         var path = "/game";
         return communicator.makeRequest("POST", path, gameName, authToken, GameIdResult.class).gameID();
     }
 
-    public void joinGame(String authToken, JoinGameData joinGameData) throws IOException {
+    public void joinGame(String authToken, JoinGameData joinGameData) throws Exception {
         var path = "/game";
         communicator.makeRequest("PUT", path, joinGameData, authToken, null);
         if (Objects.equals(joinGameData.playerColor(), "WHITE")) {

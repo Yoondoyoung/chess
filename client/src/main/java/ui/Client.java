@@ -91,7 +91,7 @@ public class Client {
         }
     }
 
-    public String eval(int userInput) throws IOException {
+    public String eval(int userInput) throws Exception {
         if (this.state == State.SIGNEDOUT){
             switch (userInput) {
                 case 1 -> {return registerUI();}
@@ -156,7 +156,7 @@ public class Client {
         return "quit";
     }
 
-    private String registerUI() throws IOException {
+    private String registerUI() throws Exception {
         setUIColor();
         System.out.println("Please give a username:");
         printPrompt();
@@ -174,7 +174,7 @@ public class Client {
         return login(new LoginData(username, password));
     }
 
-    private String loginUI() throws IOException {
+    private String loginUI() throws Exception {
         setUIColor();
         System.out.println("Please give a username:");
         printPrompt();
@@ -187,7 +187,7 @@ public class Client {
         return login(new LoginData(username, password));
     }
 
-    private String login(LoginData loginData) throws IOException {
+    private String login(LoginData loginData) throws Exception {
         UserResult user = new UserResult("", "");
         user = facade.loginUser(loginData);
 
@@ -198,7 +198,7 @@ public class Client {
         return "Logged in as: " + user.username();
     }
 
-    private String logoutUI() throws IOException {
+    private String logoutUI() throws Exception {
         facade.logoutUser(this.authToken);
         this.state = State.SIGNEDOUT;
         this.authToken = null;
@@ -206,7 +206,7 @@ public class Client {
         return this.username + " has been logged out.";
     }
 
-    private String createGameUI() throws IOException {
+    private String createGameUI() throws Exception {
         assertSignedIn();
         setUIColor();
         System.out.println("Please give a game name:");
@@ -218,7 +218,7 @@ public class Client {
         return "Game created with id " + id;
     }
 
-    private String joinGameUI() throws IOException {
+    private String joinGameUI() throws Exception {
         assertSignedIn();
 
         setUIColor();
@@ -255,7 +255,7 @@ public class Client {
         return "Joined game as player.";
     }
 
-    private String joinObserverUI() throws IOException {
+    private String joinObserverUI() throws Exception {
         assertSignedIn();
 
         setUIColor();
@@ -278,7 +278,7 @@ public class Client {
         return "Joined game as observer.";
     }
 
-    private String listGamesUI() throws IOException {
+    private String listGamesUI() throws Exception {
         assertSignedIn();
 
         GameListResult gameResult = facade.listGames(this.authToken);

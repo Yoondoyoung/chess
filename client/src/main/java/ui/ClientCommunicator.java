@@ -18,8 +18,7 @@ public class ClientCommunicator {
         serverUrl = url;
     }
 
-    <T> T makeRequest(String method, String path, Object request, String authToken, Class<T> responseClass) throws IOException {
-        try {
+    <T> T makeRequest(String method, String path, Object request, String authToken, Class<T> responseClass) throws Exception {
             URL url = (new URI(serverUrl + path)).toURL();
             HttpURLConnection http = (HttpURLConnection) url.openConnection();
             http.setRequestMethod(method);
@@ -28,9 +27,6 @@ public class ClientCommunicator {
             http.connect();
             throwIfNotSuccessful(http);
             return readBody(http, responseClass);
-        } catch (Exception ex) {
-            throw new IOException(ex.getMessage());
-        }
     }
 
 
