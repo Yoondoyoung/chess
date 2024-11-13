@@ -290,9 +290,11 @@ public class Client {
         result.append("Games: \n");
         for (GameResult game : games) {
             if (i < games.size()) {
-                result.append(String.format("%d. Name = %s, ID = %d, White Player = %s, Black Player = %s\n", i, game.gameName(), game.gameID(), game.whiteUsername(), game.blackUsername()));
+                result.append(String.format("%d. Name = %s, ID = %d, White Player = %s, Black Player = %s\n",
+                        i, game.gameName(), game.gameID(), game.whiteUsername(), game.blackUsername()));
             } else {
-                result.append(String.format("%d. Name = %s, ID = %d, White Player = %s, Black Player = %s", i, game.gameName(), game.gameID(), game.whiteUsername(), game.blackUsername()));
+                result.append(String.format("%d. Name = %s, ID = %d, White Player = %s, Black Player = %s",
+                        i, game.gameName(), game.gameID(), game.whiteUsername(), game.blackUsername()));
             }
             i++;
         }

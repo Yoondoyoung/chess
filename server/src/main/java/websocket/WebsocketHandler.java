@@ -122,7 +122,9 @@ public class WebsocketHandler {
             var loadGame = new LoadGame(gameString);
             connections.notifyOthers(authToken, new Gson().toJson(loadGame), gameID);
             sendGame(gameData, session, authToken);
-            var notification = new Notification("A move has been made: " + startCol + (9-move.startPos.row) + " to " + endCol + (9-move.endPos.row) + ".");
+            var notification = new Notification("A move has been made: " +
+                    startCol + (9-move.startPos.row) +
+                    " to " + endCol + (9-move.endPos.row) + ".");
             connections.notifyOthers(authToken, new Gson().toJson(notification), gameData.gameID());
 
             boolean checkIfCheckmate = false;

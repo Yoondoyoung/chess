@@ -181,10 +181,10 @@ public class Board {
         out.print(" ");
     }
 
-    private static void setWhite(PrintStream out) {
-        out.print(SET_BG_COLOR_WHITE);
-        out.print(SET_TEXT_COLOR_WHITE);
-    }
+//    private static void setWhite(PrintStream out) {
+//        out.print(SET_BG_COLOR_WHITE);
+//        out.print(SET_TEXT_COLOR_WHITE);
+//    }
 
     private static void setGrey(PrintStream out) {
         out.print(SET_BG_COLOR_LIGHT_GREY);
