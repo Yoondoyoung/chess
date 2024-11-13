@@ -1,6 +1,11 @@
 package client;
 
+import chess.ChessMove;
+import chess.ChessPiece;
+import chess.ChessPosition;
+import chess.InvalidMoveException;
 import model.GameNameResponse;
+import model.JoinGameData;
 import model.LoginData;
 import model.UserData;
 import model.result.GameListResult;
@@ -25,7 +30,8 @@ public class ServerFacadeTests {
     @BeforeAll
     public static void init() throws IOException {
         server = new Server();
-        var port = server.run(8080);
+        var portNum = 8080;
+        var port = server.run(portNum);
         System.out.println("Started test HTTP server on " + port);
 
         String testUrl = "http://localhost:8080";  // Replace with actual server URL if needed
@@ -56,12 +62,6 @@ public class ServerFacadeTests {
     @AfterEach
     void deleteAll() throws Exception {
         facade.deleteAll();
-    }
-
-
-    @Test
-    public void sampleTest() {
-        assertTrue(true);
     }
 
     @Test
@@ -145,4 +145,102 @@ public class ServerFacadeTests {
         });
     }
 
+    @Test
+    public void deletreAllSuccess() throws Exception {
+        facade.deleteAll();
+    }
+
+    @Test
+    public void joinGameSuccess() throws Exception {
+        var register = facade.registerUser(new UserData("player1", "password", "p1@email.com"));
+        var login = facade.loginUser(new LoginData("player1", "password"));
+        GameNameResponse gameName = new GameNameResponse("Test Game");
+        int gameId = facade.createGame(login.authToken(), gameName);
+
+        assertDoesNotThrow(() -> {
+            facade.joinGame(login.authToken(), new JoinGameData("WHITE", gameId));
+        });
+    }
+
+    @Test
+    public void joinGameFail() throws Exception {
+        var register = facade.registerUser(new UserData("player1", "password", "p1@email.com"));
+        var login = facade.loginUser(new LoginData("player1", "password"));
+
+        assertThrows(IOException.class, () -> {
+            facade.joinGame(login.authToken(), null);
+        });
+    }
+
+    @Test
+    public void makeMoveSuccess() throws Exception {
+        var register = facade.registerUser(new UserData("player1", "password", "p1@email.com"));
+        var login = facade.loginUser(new LoginData("player1", "password"));
+        GameNameResponse gameName = new GameNameResponse("Test Game");
+        int gameId = facade.createGame(login.authToken(), gameName);
+
+        assertDoesNotThrow(() -> {
+            facade.makeMove(login.authToken(), gameId, new ChessMove(new ChessPosition(7, 1), new ChessPosition(6, 1), ChessPiece.PieceType.PAWN));
+        });
+    }
+
+    @Test
+    public void makeMoveFail() throws Exception {
+        var register = facade.registerUser(new UserData("player1", "password", "p1@email.com"));
+        var login = facade.loginUser(new LoginData("player1", "password"));
+        GameNameResponse gameName = new GameNameResponse("Test Game");
+        int gameId = facade.createGame(login.authToken(), gameName);
+
+        assertDoesNotThrow(() -> {
+            facade.makeMove(login.authToken(), gameId, new ChessMove(new ChessPosition(7, 1), new ChessPosition(6, 1), ChessPiece.PieceType.PAWN));
+        });
+    }
+
+    @Test
+    public void leaveGameSuccess() throws Exception {
+        var register = facade.registerUser(new UserData("player1", "password", "p1@email.com"));
+        var login = facade.loginUser(new LoginData("player1", "password"));
+        GameNameResponse gameName = new GameNameResponse("Test Game");
+        int gameId = facade.createGame(login.authToken(), gameName);
+
+        assertDoesNotThrow(() -> {
+            facade.leaveGame(login.authToken(), gameId);
+        });
+    }
+
+    @Test
+    public void leaveGameFail() throws Exception {
+        var register = facade.registerUser(new UserData("player1", "password", "p1@email.com"));
+        var login = facade.loginUser(new LoginData("player1", "password"));
+        GameNameResponse gameName = new GameNameResponse("Test Game");
+        int gameId = facade.createGame(login.authToken(), gameName);
+
+        assertDoesNotThrow(() -> {
+            facade.leaveGame(null, 123);
+        });
+    }
+
+    @Test
+    public void resignGameSuccess() throws Exception {
+        var register = facade.registerUser(new UserData("player1", "password", "p1@email.com"));
+        var login = facade.loginUser(new LoginData("player1", "password"));
+        GameNameResponse gameName = new GameNameResponse("Test Game");
+        int gameId = facade.createGame(login.authToken(), gameName);
+
+        assertDoesNotThrow(() -> {
+            facade.resignGame(login.authToken(), gameId);
+        });
+    }
+
+    @Test
+    public void resignGameFail() throws Exception {
+        var register = facade.registerUser(new UserData("player1", "password", "p1@email.com"));
+        var login = facade.loginUser(new LoginData("player1", "password"));
+        GameNameResponse gameName = new GameNameResponse("Test Game");
+        int gameId = facade.createGame(login.authToken(), gameName);
+
+        assertDoesNotThrow(() -> {
+            facade.resignGame(null, 123);
+        });
+    }
 }
