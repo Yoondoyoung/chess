@@ -14,8 +14,8 @@ public class Board {
     private static final int BOARD_SIZE_IN_SQUARES = 8;
     private static final int SQUARE_SIZE_IN_CHARS = 1;
     private static final int LINE_WIDTH_IN_CHARS = 1;
-    private static final String[] boarderLetters = {"a", "b", "c", "d", "e", "f", "g", "h"};
-    private static final String[] boarderSpacing = {"   ", "    ", "    ", "    ", "   ", "    ", "   ", "    "};
+    private static final String[] BOARDER_LETTER = {"a", "b", "c", "d", "e", "f", "g", "h"};
+    private static final String[] BOARDER_SPACING = {"   ", "    ", "    ", "    ", "   ", "    ", "   ", "    "};
     private static Random rand = new Random();
     private static ChessGame chessGame = new ChessGame();
     private final PrintStream out;
@@ -64,9 +64,9 @@ public class Board {
         int spacingCol = 0;
         for (int boardCol = BOARD_SIZE_IN_SQUARES-1; boardCol >= 0; --boardCol) {
             if (spacingCol < BOARD_SIZE_IN_SQUARES) {
-                out.print(boarderSpacing[spacingCol]);
+                out.print(BOARDER_SPACING[spacingCol]);
             }
-            printHeaderText(out, boarderLetters[boardCol]);
+            printHeaderText(out, BOARDER_LETTER[boardCol]);
             spacingCol++;
         }
 
@@ -124,8 +124,8 @@ public class Board {
         setBlack(out);
 
         for (int boardCol = 0; boardCol < BOARD_SIZE_IN_SQUARES; ++boardCol) {
-            out.print(boarderSpacing[boardCol]);
-            printHeaderText(out, boarderLetters[boardCol]);
+            out.print(BOARDER_SPACING[boardCol]);
+            printHeaderText(out, BOARDER_LETTER[boardCol]);
         }
 
         out.println();
@@ -181,10 +181,6 @@ public class Board {
         out.print(" ");
     }
 
-//    private static void setWhite(PrintStream out) {
-//        out.print(SET_BG_COLOR_WHITE);
-//        out.print(SET_TEXT_COLOR_WHITE);
-//    }
 
     private static void setGrey(PrintStream out) {
         out.print(SET_BG_COLOR_LIGHT_GREY);
