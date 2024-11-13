@@ -28,6 +28,7 @@ public class WebsocketHandler {
 
     @OnWebSocketMessage
     public void onMessage(Session session, String message) throws DataAccessException, IOException {
+        System.out.println("onMessage Called in WebSocketHandler");
         var command = new Gson().fromJson(message, UserGameCommand.class);
         switch (command.getCommandType()) {
             case JOIN_PLAYER -> joinGamePlayer(session, message);
@@ -113,7 +114,7 @@ public class WebsocketHandler {
 
             int gameID = gameData.gameID();
             var gameString = new Gson().toJson(game);
-            service.setGame(gameString, gameID);
+            service.setGame(gameData, playerColor.toString());
 
             char startCol = (char)(move.startPos.col+96);
             char endCol = (char)(move.endPos.col+96);

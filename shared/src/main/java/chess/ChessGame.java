@@ -17,6 +17,7 @@ public class ChessGame {
     private ChessBoard cloneBoard;
     private ChessPiece takenPiece;
     private ChessMove lastMove;
+    public boolean isResigned;
 
 
     public ChessGame() {
@@ -24,6 +25,7 @@ public class ChessGame {
         this.teamTurn = TeamColor.WHITE;
         this.cloneBoard = new ChessBoard();
         this.board.resetBoard();
+        this.isResigned = false;
     }
 
     /**
@@ -258,6 +260,14 @@ public class ChessGame {
      */
     public ChessBoard getBoard() {
         return this.board;
+    }
+
+    public boolean isResigned() {
+        return isResigned;
+    }
+
+    public void setResigned(boolean resigned) {
+        isResigned = resigned;
     }
 
     @Override

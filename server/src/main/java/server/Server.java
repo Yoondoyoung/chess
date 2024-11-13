@@ -2,6 +2,7 @@ package server;
 
 import service.MyService;
 import spark.*;
+import websocket.WebsocketHandler;
 
 public class Server {
 
@@ -19,6 +20,7 @@ public class Server {
         Spark.post("/game", (req, res) -> (Handler.getInstance().createGame(req, res)));
         Spark.put("/game", (req, res) -> (Handler.getInstance().joinGame(req, res)));
         Spark.get("/game", (req, res) -> (Handler.getInstance().listGames(req, res)));
+        Spark.webSocket("/connect", WebsocketHandler.class);
         //This line initializes the server and can be removed once you have a functioning endpoint 
         Spark.init();
 

@@ -76,6 +76,10 @@ public class MyService {
         return game.gameID();
     }
 
+    public void setGame(GameData game, String color) throws DataAccessException {
+        gameDAO.updateGame(game, color);
+    }
+
     public GameData getGame(int gameID) throws DataAccessException {
         return gameDAO.getGame(gameID);
     }
