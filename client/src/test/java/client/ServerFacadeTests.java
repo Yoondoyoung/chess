@@ -65,33 +65,33 @@ public class ServerFacadeTests {
     }
 
     @Test
-    public void register_success() throws Exception {
+    public void registerSuccess() throws Exception {
         var authData = facade.registerUser(new UserData("player1", "password", "p1@email.com"));
         assertTrue(authData.authToken().length() > 10);
     }
 
     @Test
-    public void register_fail() throws Exception {
+    public void registerFail() throws Exception {
         var authData = facade.registerUser(new UserData(null, "password", "p1@email.com"));
         assertNull(authData.authToken());
     }
 
     @Test
-    public void login_success() throws Exception {
+    public void loginSuccess() throws Exception {
         var register = facade.registerUser(new UserData("player1", "password", "p1@email.com"));
         var login = facade.loginUser(new LoginData("player1", "password"));
         assertTrue(login.authToken().length() > 10);
     }
 
     @Test
-    public void login_fail() throws Exception {
+    public void loginFail() throws Exception {
         assertThrows(IOException.class, () -> {
                 facade.loginUser(new LoginData(null, null));
         });
     }
 
     @Test
-    public void logout_success() throws Exception {
+    public void logoutSuccess() throws Exception {
         var register = facade.registerUser(new UserData("player1", "password", "p1@email.com"));
         var login = facade.loginUser(new LoginData("player1", "password"));
         assertDoesNotThrow(() -> {
@@ -100,14 +100,14 @@ public class ServerFacadeTests {
     }
 
     @Test
-    public void logout_fail() throws Exception {
+    public void logoutFail() throws Exception {
         assertThrows(IOException.class, () -> {
             facade.logoutUser(null);
         });
     }
 
     @Test
-    public void listGame_sucess() throws Exception {
+    public void listGameSucess() throws Exception {
         var register = facade.registerUser(new UserData("player1", "password", "p1@email.com"));
         var login = facade.loginUser(new LoginData("player1", "password"));
         GameNameResponse gameName = new GameNameResponse("Test Game");
@@ -119,14 +119,14 @@ public class ServerFacadeTests {
     }
 
     @Test
-    public void listGame_fail() throws Exception {
+    public void listGameFail() throws Exception {
         assertThrows(IOException.class, () -> {
             facade.listGames("");
         });
     }
 
     @Test
-    public void createGame_success() throws Exception {
+    public void createGameSuccess() throws Exception {
         var register = facade.registerUser(new UserData("player1", "password", "p1@email.com"));
         var login = facade.loginUser(new LoginData("player1", "password"));
         GameNameResponse gameName = new GameNameResponse("Test Game");
@@ -136,7 +136,7 @@ public class ServerFacadeTests {
     }
 
     @Test
-    public void createGame_fail() throws Exception {
+    public void createGameFail() throws Exception {
         var register = facade.registerUser(new UserData("player1", "password", "p1@email.com"));
         var login = facade.loginUser(new LoginData("player1", "password"));
 
@@ -144,5 +144,5 @@ public class ServerFacadeTests {
             facade.createGame(login.authToken(), null);
         });
     }
-    
+
 }
