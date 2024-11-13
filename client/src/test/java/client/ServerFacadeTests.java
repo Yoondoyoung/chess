@@ -1,7 +1,9 @@
 package client;
 
+import model.GameNameResponse;
 import model.LoginData;
 import model.UserData;
+import model.result.GameListResult;
 import org.eclipse.jetty.server.Authentication;
 import org.junit.jupiter.api.*;
 import server.Server;
@@ -104,7 +106,29 @@ public class ServerFacadeTests {
         });
     }
 
-    
+    @Test
+    public void listGame_sucess() throws Exception {
+        var register = facade.registerUser(new UserData("player1", "password", "p1@email.com"));
+        var login = facade.loginUser(new LoginData("player1", "password"));
+        GameNameResponse gameName = new GameNameResponse("Test Game");
+        int gameId = facade.createGame(login.authToken(), gameName);
+
+        assertTrue(gameId > 0);
+        GameListResult result = facade.listGames(login.authToken());
+
+        assertNotNull(result);
+    }
+
+    @Test
+    public void listGame_fail() throws Exception {
+        assertThrows(IOException.class, () -> {
+            facade.listGames("");
+        });
+    }
+
+
+
+
 
 
 }
