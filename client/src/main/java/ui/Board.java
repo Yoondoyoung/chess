@@ -14,8 +14,8 @@ public class Board {
     private static final int BOARD_SIZE_IN_SQUARES = 8;
     private static final int SQUARE_SIZE_IN_CHARS = 1;
     private static final int LINE_WIDTH_IN_CHARS = 1;
-    private static final String[] boarder_letters = {"a", "b", "c", "d", "e", "f", "g", "h"};
-    private static final String[] boarder_spacing = {"   ", "    ", "    ", "    ", "   ", "    ", "   ", "    "};
+    private static final String[] boarderLetters = {"a", "b", "c", "d", "e", "f", "g", "h"};
+    private static final String[] boarderSpacing = {"   ", "    ", "    ", "    ", "   ", "    ", "   ", "    "};
     private static Random rand = new Random();
     private static ChessGame chessGame = new ChessGame();
     private final PrintStream out;
@@ -64,9 +64,9 @@ public class Board {
         int spacingCol = 0;
         for (int boardCol = BOARD_SIZE_IN_SQUARES-1; boardCol >= 0; --boardCol) {
             if (spacingCol < BOARD_SIZE_IN_SQUARES) {
-                out.print(boarder_spacing[spacingCol]);
+                out.print(boarderSpacing[spacingCol]);
             }
-            printHeaderText(out, boarder_letters[boardCol]);
+            printHeaderText(out, boarderLetters[boardCol]);
             spacingCol++;
         }
 
@@ -124,8 +124,8 @@ public class Board {
         setBlack(out);
 
         for (int boardCol = 0; boardCol < BOARD_SIZE_IN_SQUARES; ++boardCol) {
-            out.print(boarder_spacing[boardCol]);
-            printHeaderText(out, boarder_letters[boardCol]);
+            out.print(boarderSpacing[boardCol]);
+            printHeaderText(out, boarderLetters[boardCol]);
         }
 
         out.println();
