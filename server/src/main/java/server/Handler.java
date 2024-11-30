@@ -45,7 +45,6 @@ public class Handler {
         try{
             userData = gson.fromJson(req.body(), UserData.class);
             result = service.register(userData);
-
         } catch (Exception e){
             FailureResult response500 = new FailureResult("Error: description");
             return gson.toJson(response500);
@@ -63,6 +62,7 @@ public class Handler {
     }
 
     public Object login(Request req, Response res) throws DataAccessException {
+        System.out.println("Login called in Handler");
         UserData userData;
         String auth;
         // Parse request body to UserData and handle potential JSON errors
@@ -82,8 +82,6 @@ public class Handler {
             res.status(401); // Unauthorized if login fails
             return gson.toJson(new FailureResult("Error: unauthorized"));
         }
-
-
         // Successful login
         res.status(200);
         LoginResult loginResult = new LoginResult(userData.username(), auth);
@@ -146,8 +144,6 @@ public class Handler {
     public Object joinGame(Request req, Response res) throws Exception {
         String authToken;
         JoinGameRequset joinGameRequset;
-
-
         try {
             authToken = req.headers("authorization");
             joinGameRequset = new Gson().fromJson(req.body(), JoinGameRequset.class);
@@ -161,8 +157,8 @@ public class Handler {
         }
         if ((!Objects.equals(joinGameRequset.playerColor(), "WHITE") &&
                 !Objects.equals(joinGameRequset.playerColor(), "BLACK") &&
-                Objects.equals(joinGameRequset.playerColor(), null)) ||
-                Objects.equals(joinGameRequset.gameID(), 0))
+                !Objects.equals(joinGameRequset.playerColor(), "OBSERVER") ||
+                Objects.equals(joinGameRequset.gameID(), 0)))
         {
             res.status(400);
             FailureResult response400 = new FailureResult("Error: bad request");
@@ -171,9 +167,9 @@ public class Handler {
         try {
             service.joinGame(joinGameRequset, authToken);
         } catch (DataAccessException e){
-            res.status(403);
-            FailureResult response403 = new FailureResult("Error: already taken");
-            return new Gson().toJson(response403);
+            res.status(400);
+            FailureResult response400 = new FailureResult("Error: bad request");
+            return new Gson().toJson(response400);
         }
 
         res.status(200);

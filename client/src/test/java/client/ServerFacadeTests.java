@@ -84,7 +84,7 @@ public class ServerFacadeTests {
 
     @Test
     public void loginFail() throws Exception {
-        assertThrows(IOException.class, () -> {
+        assertThrows(Exception.class, () -> {
                 facade.loginUser(new LoginData(null, null));
         });
     }
@@ -100,7 +100,7 @@ public class ServerFacadeTests {
 
     @Test
     public void logoutFail() throws Exception {
-        assertThrows(IOException.class, () -> {
+        assertThrows(Exception.class, () -> {
             facade.logoutUser(null);
         });
     }
@@ -119,7 +119,7 @@ public class ServerFacadeTests {
 
     @Test
     public void listGameFail() throws Exception {
-        assertThrows(IOException.class, () -> {
+        assertThrows(Exception.class, () -> {
             facade.listGames("");
         });
     }
@@ -139,7 +139,7 @@ public class ServerFacadeTests {
         var register = facade.registerUser(new UserData("player1", "password", "p1@email.com"));
         var login = facade.loginUser(new LoginData("player1", "password"));
 
-        assertThrows(IOException.class, () -> {
+        assertThrows(Exception.class, () -> {
             facade.createGame(login.authToken(), null);
         });
     }
@@ -166,7 +166,7 @@ public class ServerFacadeTests {
         var register = facade.registerUser(new UserData("player1", "password", "p1@email.com"));
         var login = facade.loginUser(new LoginData("player1", "password"));
 
-        assertThrows(IOException.class, () -> {
+        assertThrows(Exception.class, () -> {
             facade.joinGame(login.authToken(), null);
         });
     }

@@ -44,10 +44,18 @@ public class ClientCommunicator {
         }
     }
 
-    private void throwIfNotSuccessful(HttpURLConnection http) throws IOException {
+    private void throwIfNotSuccessful(HttpURLConnection http) throws Exception {
         var status = http.getResponseCode();
         if (!isSuccessful(status)) {
-            throw new IOException("failure: " + status);
+            switch(status){
+                case 403:
+                    throw new Exception("It is already taken");
+                case 400:
+                    throw new Exception("Invalid input(username/password/email/gameID)");
+                case 401:
+                    throw new Exception("Invalid username/password");
+            }
+            throw new Exception("Bad Request");
         }
     }
 

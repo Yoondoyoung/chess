@@ -11,6 +11,7 @@ import model.result.UserResult;
 import model.GameNameResponse;
 import ui.websocket.NotificationHandler;
 
+import static chess.ChessGame.TeamColor.OBSERVER;
 import static java.lang.Character.getNumericValue;
 
 import java.io.IOException;
@@ -169,7 +170,9 @@ public class Client {
         System.out.println("Please give an email:");
         printPrompt();
         String email = scanner.nextLine();
-
+        if(username == null || password == null || email == null){
+            throw new IOException("Invalid Input");
+        }
         facade.registerUser(new UserData(username, password, email));
         return login(new LoginData(username, password));
     }
@@ -189,6 +192,9 @@ public class Client {
 
     private String login(LoginData loginData) throws Exception {
         UserResult user = new UserResult("", "");
+        if(loginData.username() == null || loginData.password() == null){
+            throw new IOException("Invalid Input");
+        }
         user = facade.loginUser(loginData);
 
         this.authToken = user.authToken();
@@ -257,7 +263,6 @@ public class Client {
 
     private String joinObserverUI() throws Exception {
         assertSignedIn();
-
         setUIColor();
         System.out.println("Please give a game number:");
         printPrompt();
@@ -270,8 +275,7 @@ public class Client {
             return joinObserverUI();
         }
 
-        facade.joinGame(this.authToken, new JoinGameData(null, gameID));
-
+        facade.joinGame(this.authToken, new JoinGameData("OBSERVER", gameID));
         this.state = State.OBSERVING;
         this.teamColor = null;
         this.gameID = gameID;

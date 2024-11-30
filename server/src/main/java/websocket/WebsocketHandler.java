@@ -88,7 +88,6 @@ public class WebsocketHandler {
             service.isValidAuth(authToken);
             String username = service.getUsername(authToken);
             GameData gameData = service.getGame(command.getGameID());
-
             sendGame(gameData, session, authToken);
             var notification = new Notification(username + " has joined as an observer.");
             connections.notifyOthers(authToken, new Gson().toJson(notification), gameData.gameID());

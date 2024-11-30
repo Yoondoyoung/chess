@@ -112,7 +112,11 @@ public class MyService {
             }
         } else if (Objects.equals(joinGameRequset.playerColor(), null)){
             throw new DataAccessException("Error: Bad request");
+        } else if (game == null){
+            throw new DataAccessException("Error: Bad request");
         }
+
+
     }
 
     public List<GameResult> listGames(String authToken) throws Exception{

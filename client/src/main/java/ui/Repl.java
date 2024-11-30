@@ -22,7 +22,6 @@ public class Repl implements NotificationHandler {
 
     public void run() {
         System.out.print(SET_BG_COLOR_BLACK);
-        System.out.println("Chess :D");
         System.out.println(SET_TEXT_COLOR_WHITE + client.inputUI());
 
         Scanner scanner = new Scanner(System.in);
@@ -38,8 +37,8 @@ public class Repl implements NotificationHandler {
                 if (!Objects.equals(result, "")) {
                     System.out.println(SET_TEXT_COLOR_GREEN + SET_BG_COLOR_BLACK + result);
                 }
-            } catch (Throwable e) {
-                var msg = e.toString();
+            } catch (Exception e) {
+                String msg = e.getMessage();
                 System.out.println(SET_TEXT_COLOR_BLUE + SET_BG_COLOR_BLACK + msg);
             }
             if (!result.equals("quit")) {
