@@ -36,6 +36,21 @@ public class WebsocketHandler {
             case MAKE_MOVE -> makeMove(session, message);
             case LEAVE -> leaveGame(session, message);
             case RESIGN -> resignGame(session, message);
+            case CONNECT -> connect(session, message);
+        }
+    }
+
+    private void connect(Session session, String message) throws IOException {
+        var command = new Gson().fromJson(message, Connect.class);
+        String authToken = command.getAuthString();
+        try {
+            service.isValidAuth(authToken);
+            var notification = new Notification("Successfully Connected");
+            GameData gameData = service.getGame(command.getGameID());
+            sendGame(gameData, session, authToken);
+            connections.notifyOthers(authToken, new Gson().toJson(notification), gameData.gameID());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
