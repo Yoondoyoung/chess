@@ -78,4 +78,8 @@ public class ServerFacade {
         ws.resignGame(authToken, gameID);
     }
 
+    public void connect(String authToken, int gameID) throws IOException {
+        ws.connect(authToken, gameID);
+    }
+
 }

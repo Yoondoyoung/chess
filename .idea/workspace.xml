@@ -6,16 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="40362976-303f-48a0-9bb7-bd43d5c088bd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/test/java/server/TestFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/test/java/server/WebSocketTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/test-classes/client/ServerFacadeTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/test-classes/client/ServerFacadeTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/client/server/TestFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/client/server/WebSocketTests$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/client/server/WebSocketTests$WebsocketUser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/client/server/WebSocketTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/ui/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/ui/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/ui/ServerFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/ui/ServerFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/ui/websocket/WebSocketFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/ui/websocket/WebSocketFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/websocket/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/websocket/Connection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/websocket/WebsocketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/websocket/WebsocketHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/test/java/server/WebSocketTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/java/server/WebSocketTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/websocket/WebsocketHandler$1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server/target/classes/websocket/WebsocketHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/websocket/WebsocketHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/test-classes/server/WebSocketTests$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/test-classes/server/WebSocketTests$WebsocketUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/test-classes/server/WebSocketTests$WebsocketUser.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/target/test-classes/server/WebSocketTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/test-classes/server/WebSocketTests.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,6 +89,8 @@
     "JUnit.StandardAPITests.goodCreate.executor": "Run",
     "JUnit.ValidMovesTests.executor": "Run",
     "JUnit.ValidMovesTests.forcedMove.executor": "Debug",
+    "JUnit.WebSocketTests.connectBadAuthToken.executor": "Run",
+    "JUnit.WebSocketTests.connectBadGameID.executor": "Run",
     "JUnit.WebSocketTests.connectGood.executor": "Run",
     "JUnit.WebSocketTests.executor": "Run",
     "JavaScript Debug.index.html (1).executor": "Debug",
@@ -141,33 +142,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ServerFacadeTests.createGame_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="client" />
+    <configuration name="WebSocketTests.connectBadAuthToken" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="server" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="client.*" />
+          <option name="PATTERN" value="server.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="client" />
-      <option name="MAIN_CLASS_NAME" value="client.ServerFacadeTests" />
-      <option name="METHOD_NAME" value="createGame_Success" />
+      <option name="PACKAGE_NAME" value="server" />
+      <option name="MAIN_CLASS_NAME" value="server.WebSocketTests" />
+      <option name="METHOD_NAME" value="connectBadAuthToken" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ServerFacadeTests.makeMoveFail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="client" />
+    <configuration name="WebSocketTests.connectBadGameID" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="server" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="client.*" />
+          <option name="PATTERN" value="server.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="client" />
-      <option name="MAIN_CLASS_NAME" value="client.ServerFacadeTests" />
-      <option name="METHOD_NAME" value="makeMoveFail" />
+      <option name="PACKAGE_NAME" value="server" />
+      <option name="MAIN_CLASS_NAME" value="server.WebSocketTests" />
+      <option name="METHOD_NAME" value="connectBadGameID" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -194,11 +195,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.WebSocketTests.connectBadAuthToken" />
+        <item itemvalue="JUnit.WebSocketTests.connectBadGameID" />
         <item itemvalue="JUnit.WebSocketTests.connectGood" />
         <item itemvalue="JavaScript Debug.index.html" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.ServerFacadeTests.makeMoveFail" />
-        <item itemvalue="JUnit.ServerFacadeTests.createGame_Success" />
       </list>
     </recent_temporary>
   </component>
@@ -224,7 +225,9 @@
       <workItem from="1731615862898" duration="4340000" />
       <workItem from="1731620489612" duration="8546000" />
       <workItem from="1732681029981" duration="1255000" />
-      <workItem from="1732998177220" duration="4891000" />
+      <workItem from="1732998177220" duration="4926000" />
+      <workItem from="1733080926401" duration="1585000" />
+      <workItem from="1733082724991" duration="8732000" />
     </task>
     <servers />
   </component>
@@ -245,23 +248,29 @@
           <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/server/src/test/java/server/WebSocketTests.java</url>
-          <line>69</line>
-          <option name="timeStamp" value="58" />
+          <url>file://$PROJECT_DIR$/server/src/main/java/websocket/WebsocketHandler.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="61" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/server/src/main/java/websocket/WebsocketHandler.java</url>
+          <line>216</line>
+          <option name="timeStamp" value="62" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/server/src/test/java/server/WebSocketTests.java</url>
-          <line>308</line>
-          <option name="timeStamp" value="59" />
+          <line>374</line>
+          <option name="timeStamp" value="63" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/server/src/main/java/dataaccess/MemoryGameDAO.java</url>
-          <line>96</line>
-          <properties class="dataaccess.MemoryGameDAO" method="updateGame">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="34" />
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/server/src/main/java/websocket/ConnectionManager.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/server/src/main/java/websocket/ConnectionManager.java</url>
+          <line>59</line>
+          <option name="timeStamp" value="65" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/client/src/main/java/Main.java</url>
@@ -291,15 +300,6 @@
           <option name="timeStamp" value="40" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/server/src/main/java/server/Handler.java</url>
-          <line>41</line>
-          <properties class="server.Handler" method="register">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="43" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/client/src/main/java/ui/Repl.java</url>
           <line>61</line>
           <properties class="ui.Repl" method="error">
@@ -307,24 +307,6 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="45" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/client/src/main/java/ui/websocket/WebSocketFacade.java</url>
-          <line>56</line>
-          <properties class="ui.websocket.WebSocketFacade" method="error">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="46" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/client/src/main/java/ui/websocket/WebSocketFacade.java</url>
-          <line>61</line>
-          <properties class="ui.websocket.WebSocketFacade" method="notification">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="47" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/client/src/main/java/ui/ClientCommunicator.java</url>
@@ -352,15 +334,6 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="50" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/server/src/main/java/server/Handler.java</url>
-          <line>143</line>
-          <properties class="server.Handler" method="joinGame">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="54" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

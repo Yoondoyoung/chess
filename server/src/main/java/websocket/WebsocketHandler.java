@@ -44,13 +44,29 @@ public class WebsocketHandler {
         var command = new Gson().fromJson(message, Connect.class);
         String authToken = command.getAuthString();
         try {
-            service.isValidAuth(authToken);
-            var notification = new Notification("Successfully Connected");
-            GameData gameData = service.getGame(command.getGameID());
-            sendGame(gameData, session, authToken);
-            connections.notifyOthers(authToken, new Gson().toJson(notification), gameData.gameID());
+            if(service.isValidAuth(authToken)){
+                GameData gameData = service.getGame(command.getGameID());
+                if(gameData == null){
+                    var notification = new Notification("Error: Invalid Game ID");
+                    connections.connections.put(authToken, new Connection(authToken, session));
+                    this.error(authToken, new Exception(notification.getMessage()));
+//                    connections.notifyPlayer(authToken, new Gson().toJson(notification)); // Notify the player
+
+                    // Optionally, log the error or track it
+                    System.out.println("Invalid game ID: " + command.getGameID());
+                }else{
+                    var notification = new Notification("Successfully Connected");
+                    sendGame(gameData, session, authToken);
+                    connections.notifyOthers(authToken, new Gson().toJson(notification), gameData.gameID());
+                }
+            }else{
+                connections.connections.put(authToken, new Connection(authToken, session));
+                this.error(authToken, new Exception("Invalid authToken"));
+            }
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.err.println("Error during connect: " + e.getMessage());
+            connections.connections.put(authToken, new Connection(authToken, session));
+            this.error(authToken, e);
         }
     }
 
@@ -91,10 +107,11 @@ public class WebsocketHandler {
     private void sendGame(GameData gameData, Session session, String authToken) throws IOException {
         ChessGame game = gameData.game();
         connections.add(authToken, session, gameData.gameID());
-
         var loadGame = new LoadGame(new Gson().toJson(game));
         connections.notifyPlayer(authToken, new Gson().toJson(loadGame));
     }
+
+
 
     private void joinGameObserver(Session session, String message) throws IOException {
         var command = new Gson().fromJson(message, JoinObserver.class);

@@ -405,14 +405,12 @@ public class Client {
     private String leaveGameUI() throws IOException {
         this.state = State.SIGNEDIN;
         facade.leaveGame(authToken, gameID);
-
         return "Left Game";
     }
 
     private String resignGameUI() throws IOException {
         this.state = State.SIGNEDIN;
         facade.resignGame(authToken, gameID);
-
         return "Resigned Game.";
     }
 

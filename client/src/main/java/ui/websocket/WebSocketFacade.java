@@ -89,6 +89,11 @@ public class WebSocketFacade extends Endpoint {
         this.session.getBasicRemote().sendText(new Gson().toJson(command));
     }
 
+    public void connect(String authToken, int gameID) throws IOException {
+        var command = new Connect(authToken, gameID);
+        this.session.getBasicRemote().sendText(new Gson().toJson(command));
+    }
+
     @Override
     public void onOpen(Session session, EndpointConfig endpointConfig) {
     }

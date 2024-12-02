@@ -9,6 +9,11 @@ public class Connection {
     public Session session;
     public int gameID;
 
+    public Connection(String authToken, Session session) {
+        this.authToken = authToken;
+        this.session = session;
+    }
+
     public Connection(String authToken, Session session, int gameID) {
         this.authToken = authToken;
         this.session = session;
