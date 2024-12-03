@@ -167,9 +167,9 @@ public class Handler {
         try {
             service.joinGame(joinGameRequset, authToken);
         } catch (DataAccessException e){
-            res.status(400);
-            FailureResult response400 = new FailureResult("Error: bad request");
-            return new Gson().toJson(response400);
+            res.status(403);
+            FailureResult response403 = new FailureResult("Error: bad request");
+            return new Gson().toJson(response403);
         }
 
         res.status(200);

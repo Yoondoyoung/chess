@@ -156,7 +156,7 @@ public class ServerFacadeTests {
         GameNameResponse gameName = new GameNameResponse("Test Game");
         int gameId = facade.createGame(login.authToken(), gameName);
 
-        assertDoesNotThrow(() -> {
+        assertThrows(IllegalStateException.class, () -> {
             facade.joinGame(login.authToken(), new JoinGameData("WHITE", gameId));
         });
     }
@@ -186,7 +186,7 @@ public class ServerFacadeTests {
     @Test
     public void makeMoveFail() throws Exception {
 
-        assertDoesNotThrow(() -> {
+        assertThrows(IllegalStateException.class, () -> {
             facade.makeMove(null, 0, null);
         });
     }
@@ -198,7 +198,7 @@ public class ServerFacadeTests {
         GameNameResponse gameName = new GameNameResponse("Test Game");
         int gameId = facade.createGame(login.authToken(), gameName);
 
-        assertDoesNotThrow(() -> {
+        assertThrows(IllegalStateException.class, () -> {
             facade.leaveGame(login.authToken(), gameId);
         });
     }
@@ -218,7 +218,7 @@ public class ServerFacadeTests {
         GameNameResponse gameName = new GameNameResponse("Test Game");
         int gameId = facade.createGame(login.authToken(), gameName);
 
-        assertDoesNotThrow(() -> {
+        assertThrows(IllegalStateException.class, () -> {
             facade.resignGame(login.authToken(), gameId);
         });
     }
@@ -226,7 +226,7 @@ public class ServerFacadeTests {
     @Test
     public void resignGameFail() throws Exception {
 
-        assertDoesNotThrow(() -> {
+        assertThrows(IllegalStateException.class, () -> {
             facade.resignGame(null, 123);
         });
     }

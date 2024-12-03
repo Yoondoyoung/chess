@@ -51,15 +51,24 @@ public class ServiceTest {
         UserData user = new UserData("testUser", "password123", "abcd@gmail.com");
         service.register(user);
         UserData wrongPasswordUser = new UserData("testUser", "wrongPassword", "wrong@mail.com");
-        String token = service.login(wrongPasswordUser);
-        assertNull(token, "Login with incorrect password should return null.");
+
+        DataAccessException exception = assertThrows(DataAccessException.class, () -> {
+            service.login(wrongPasswordUser);
+        });
+
+        assertEquals("Error: unauthorized", exception.getMessage());
+
     }
 
     @Test
     public void testLoginFailUserNotFound() throws DataAccessException {
         UserData user = new UserData("nonExistentUser", "password123", "test@mail.com");
-        String token = service.login(user);
-        assertNull(token, "Login for non-existent user should return null.");
+        DataAccessException exception = assertThrows(DataAccessException.class, () -> {
+            service.login(user);
+        });
+
+        assertEquals("Error: unauthorized", exception.getMessage());
+
     }
 
     // --------------------- Logout Tests ---------------------

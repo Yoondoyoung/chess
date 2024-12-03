@@ -21,6 +21,9 @@ public class ChessGame {
 
 
     public ChessGame() {
+        System.out.println(
+                "Called Chess Game!"
+        );
         this.board = new ChessBoard();
         this.teamTurn = TeamColor.WHITE;
         this.cloneBoard = new ChessBoard();
@@ -28,11 +31,22 @@ public class ChessGame {
         this.isResigned = false;
     }
 
+    public ChessGame(ChessBoard board, TeamColor color, ChessBoard cloneBoard, boolean isResigned) {
+        this.board = board;
+        this.teamTurn = color;
+        this.cloneBoard = cloneBoard;
+        this.isResigned = isResigned;
+    }
+
     /**
      * @return Which team's turn it is
      */
     public TeamColor getTeamTurn() {
         return this.teamTurn;
+    }
+
+    public ChessBoard getCloneBoard() {
+        return this.cloneBoard;
     }
 
     /**
@@ -73,7 +87,6 @@ public class ChessGame {
                 if (!isInCheck(target.getTeamColor(), clonedBoard)) {
                     System.out.println("validMove = "+move+ "Color = "+target.getTeamColor()+ "Type = "+target.getPieceType());
                     validMoves.add(move);
-                    System.out.println("Added");
                 }
                 undoMove(clonedBoard, move);
             }
@@ -109,8 +122,11 @@ public class ChessGame {
                 !validMoves(move.getStartPosition()).stream().anyMatch(moving -> moving.getEndPosition().equals(move.getEndPosition())) ||
                 this.board.getPiece(target).getTeamColor() != this.teamTurn)
         {
+            System.out.println(this.board.getPiece(target).getTeamColor());
+            System.out.println(this.teamTurn);
             throw new InvalidMoveException();
         }
+
 
         ChessPiece movedPiece = board.getPiece(move.getStartPosition());
 
@@ -118,13 +134,18 @@ public class ChessGame {
             if(move.getPromotionPiece() != null){
                 movedPiece.type = move.getPromotionPiece();
             }
-
         }
         takenPiece = board.getPiece(move.getEndPosition());
         board.addPiece(move.getEndPosition(), movedPiece);
         board.addPiece(move.getStartPosition(), null);
         lastMove = move;
+        System.out.println(
+                "Turn changed from : " + this.teamTurn + "\n"
+        );
         this.teamTurn = (this.teamTurn == TeamColor.WHITE) ? TeamColor.BLACK : TeamColor.WHITE;
+        System.out.println(
+                "Turn changed to : " + this.teamTurn + "\n"
+        );
     }
 
     public void applyMove(ChessBoard board, ChessMove move) {

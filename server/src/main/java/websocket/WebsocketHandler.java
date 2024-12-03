@@ -141,6 +141,7 @@ public class WebsocketHandler {
                 throw new DataAccessException("You can only move your pieces.");
             }
             ChessMove move = command.getMove();
+//            game.setTeamTurn(playerColor);
             game.makeMove(move);
 
             int gameID = gameData.gameID();
@@ -175,13 +176,14 @@ public class WebsocketHandler {
                     connections.broadcast(new Gson().toJson(checkWhite), gameID);
                 }
                 if (game.isInCheck(ChessGame.TeamColor.BLACK)) {
-                    var checkBlack = new Notification("WHITE is in check!");
+                    var checkBlack = new Notification("BLACK is in check!");
                     connections.broadcast(new Gson().toJson(checkBlack), gameID);
                 }
             }
 
 
         } catch (Exception e) {
+            connections.connections.put(authToken, new Connection(authToken, session));
             error(authToken, e);
         }
     }
@@ -195,6 +197,7 @@ public class WebsocketHandler {
             var notification = new Notification(username + " has left the game.");
             connections.notifyOthers(authToken, new Gson().toJson(notification), command.getGameID());
         } catch (Exception e) {
+            connections.connections.put(authToken, new Connection(authToken, session));
             error(authToken, e);
         }
     }
@@ -209,6 +212,7 @@ public class WebsocketHandler {
             connections.broadcast(new Gson().toJson(notification), command.getGameID());
             connections.remove(authToken);
         } catch (Exception e) {
+            connections.connections.put(authToken, new Connection(authToken, session));
             error(authToken, e);
         }
     }
