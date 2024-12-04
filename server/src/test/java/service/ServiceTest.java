@@ -181,4 +181,17 @@ public class ServiceTest {
             service.leaveGame(leaveGameRequest, "bad Token");
         });
     }
+
+    @Test
+    public void testLeaveGamesFailBadRequest() throws Exception {
+        String gameName = "Test Game";
+        int gameID = service.createGame(gameName);
+
+        UserData user = new UserData("testUser", "password123", "abcd@gmail.com");
+        String token = service.register(user);
+        LeaveGameRequest leaveGameRequest = new LeaveGameRequest("WHITE", 100);
+        DataAccessException exception = assertThrows(DataAccessException.class, () -> {
+            service.leaveGame(leaveGameRequest, token);
+        });
+    }
 }

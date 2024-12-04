@@ -73,6 +73,7 @@
     "JUnit.ServerFacadeTests.executor": "Run",
     "JUnit.ServerFacadeTests.makeMoveFail.executor": "Debug",
     "JUnit.ServiceTest.executor": "Run",
+    "JUnit.ServiceTest.testLeaveGamesFailInvalidToken.executor": "Run",
     "JUnit.StandardAPITests.badAuthCreate.executor": "Run",
     "JUnit.StandardAPITests.executor": "Run",
     "JUnit.StandardAPITests.failLogout.executor": "Run",
@@ -133,7 +134,23 @@
       <recent name="$PROJECT_DIR$/shared/src/main/java" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ServiceTest.testLeaveGamesFailInvalidToken">
+  <component name="RunManager" selected="JUnit.ServiceTest.testLeaveGamesFailBadRequest">
+    <configuration name="ServiceTest.testLeaveGamesFailBadRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="service" />
+      <option name="MAIN_CLASS_NAME" value="service.ServiceTest" />
+      <option name="METHOD_NAME" value="testLeaveGamesFailBadRequest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ServiceTest.testLeaveGamesFailInvalidToken" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="server" />
       <extension name="coverage">
@@ -166,22 +183,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WebSocketTests.joinAfterLeaveGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="server" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="server.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="server" />
-      <option name="MAIN_CLASS_NAME" value="server.WebSocketTests" />
-      <option name="METHOD_NAME" value="joinAfterLeaveGame" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="java in client" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="client" />
       <option name="TEST_OBJECT" value="directory" />
@@ -200,11 +201,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ServiceTest.testLeaveGamesFailBadRequest" />
         <item itemvalue="JUnit.ServiceTest.testLeaveGamesFailInvalidToken" />
         <item itemvalue="JUnit.WebSocketTests.connectGood" />
         <item itemvalue="JUnit.test in server" />
         <item itemvalue="JUnit.java in client" />
-        <item itemvalue="JUnit.WebSocketTests.joinAfterLeaveGame" />
       </list>
     </recent_temporary>
   </component>
@@ -232,7 +233,7 @@
       <workItem from="1732681029981" duration="1255000" />
       <workItem from="1732998177220" duration="4926000" />
       <workItem from="1733080926401" duration="1585000" />
-      <workItem from="1733082724991" duration="27512000" />
+      <workItem from="1733082724991" duration="27632000" />
     </task>
     <servers />
   </component>
