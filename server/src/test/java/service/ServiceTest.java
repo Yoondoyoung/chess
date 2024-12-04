@@ -3,6 +3,7 @@ package service;
 import dataaccess.DataAccessException;
 import model.GameData;
 import model.JoinGameRequset;
+import model.LeaveGameRequest;
 import model.UserData;
 import model.result.GameResult;
 import org.junit.jupiter.api.BeforeEach;
@@ -166,5 +167,18 @@ public class ServiceTest {
         });
 
         assertEquals("Error: Bad request", exception.getMessage());
+    }
+
+    @Test
+    public void testLeaveGamesFailInvalidToken() throws Exception {
+        String gameName = "Test Game";
+        int gameID = service.createGame(gameName);
+
+        UserData user = new UserData("testUser", "password123", "abcd@gmail.com");
+
+        LeaveGameRequest leaveGameRequest = new LeaveGameRequest("WHITE", gameID);
+        DataAccessException exception = assertThrows(DataAccessException.class, () -> {
+            service.leaveGame(leaveGameRequest, "bad Token");
+        });
     }
 }

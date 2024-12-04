@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40362976-303f-48a0-9bb7-bd43d5c088bd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/Handler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/Handler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/websocket/WebsocketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/websocket/WebsocketHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/test/java/service/ServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/java/service/ServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +133,23 @@
       <recent name="$PROJECT_DIR$/shared/src/main/java" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.ServiceTest.testLeaveGamesFailInvalidToken">
+    <configuration name="ServiceTest.testLeaveGamesFailInvalidToken" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="service" />
+      <option name="MAIN_CLASS_NAME" value="service.ServiceTest" />
+      <option name="METHOD_NAME" value="testLeaveGamesFailInvalidToken" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="WebSocketTests.connectGood" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="server" />
       <extension name="coverage">
@@ -168,22 +182,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WebSocketTests.moveAfterResign" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="server" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="server.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="server" />
-      <option name="MAIN_CLASS_NAME" value="server.WebSocketTests" />
-      <option name="METHOD_NAME" value="moveAfterResign" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="java in client" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="client" />
       <option name="TEST_OBJECT" value="directory" />
@@ -202,11 +200,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ServiceTest.testLeaveGamesFailInvalidToken" />
         <item itemvalue="JUnit.WebSocketTests.connectGood" />
         <item itemvalue="JUnit.test in server" />
         <item itemvalue="JUnit.java in client" />
         <item itemvalue="JUnit.WebSocketTests.joinAfterLeaveGame" />
-        <item itemvalue="JUnit.WebSocketTests.moveAfterResign" />
       </list>
     </recent_temporary>
   </component>
@@ -234,7 +232,7 @@
       <workItem from="1732681029981" duration="1255000" />
       <workItem from="1732998177220" duration="4926000" />
       <workItem from="1733080926401" duration="1585000" />
-      <workItem from="1733082724991" duration="27327000" />
+      <workItem from="1733082724991" duration="27512000" />
     </task>
     <servers />
   </component>
