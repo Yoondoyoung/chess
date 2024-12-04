@@ -194,4 +194,17 @@ public class ServiceTest {
             service.leaveGame(leaveGameRequest, token);
         });
     }
+
+    @Test
+    public void testLeaveGamesSuccess() throws Exception {
+        String gameName = "Test Game";
+        int gameID = service.createGame(gameName);
+
+        UserData user = new UserData("testUser", "password123", "abcd@gmail.com");
+        String token = service.register(user);
+        LeaveGameRequest leaveGameRequest = new LeaveGameRequest("WHITE", gameID);
+        assertDoesNotThrow(() -> service.leaveGame(leaveGameRequest, token));
+
+    }
+
 }
