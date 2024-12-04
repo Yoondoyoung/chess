@@ -151,4 +151,31 @@ public class MemoryGameDAO implements GameDAO{
         }
         return null;
     }
+
+    @Override
+    public void leaveGame(int gameID, String color) throws DataAccessException {
+        String usernameColumn;
+        if ("BLACK".equalsIgnoreCase(color)) {
+            usernameColumn = "blackUsername";
+        } else if ("WHITE".equalsIgnoreCase(color)) {
+            usernameColumn = "whiteUsername";
+        } else {
+            throw new DataAccessException("Invalid color. Must be either BLACK or WHITE.");
+        }
+
+        try (var conn = DatabaseManager.getConnection()) {
+            var statement = "UPDATE games SET " + usernameColumn + " = NULL WHERE gameID = ?";
+            try (var ps = conn.prepareStatement(statement)) {
+                ps.setInt(1, gameID);
+                int rowsAffected = ps.executeUpdate();
+
+                if (rowsAffected == 0) {
+                    throw new DataAccessException("No game found with the specified ID.");
+                }
+            }
+        } catch (Exception e) {
+            throw new DataAccessException(String.format("Unable to update game: %s", e.getMessage()));
+        }
+    }
+
 }

@@ -6,6 +6,8 @@ import chess.InvalidMoveException;
 import com.google.gson.Gson;
 import dataaccess.DataAccessException;
 import model.GameData;
+import model.JoinGameRequset;
+import model.LeaveGameRequest;
 import org.eclipse.jetty.websocket.api.Session;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketMessage;
 import org.eclipse.jetty.websocket.api.annotations.WebSocket;
@@ -95,7 +97,8 @@ public class WebsocketHandler {
                     throw new Exception("You already joined as the black user.");
                 }
             }
-
+            JoinGameRequset join = new JoinGameRequset(playerString, gameData.gameID());
+            service.joinGame(join, authToken);
             sendGame(gameData, session, authToken);
             var notification = new Notification(username + " has joined as the " + playerString + " player.");
             connections.notifyOthers(authToken, new Gson().toJson(notification), gameData.gameID());
@@ -136,12 +139,18 @@ public class WebsocketHandler {
             GameData gameData = service.getGame(command.getGameID());
             ChessGame game = gameData.game();
             ChessGame.TeamColor playerColor = service.checkUserColor(username, gameData);
-            game.setTeamTurn(playerColor);
             ChessGame.TeamColor pieceColor = game.getBoard().getPiece(command.getMove().startPos).getTeamColor();
             if (pieceColor != playerColor) {
                 throw new DataAccessException("You can only move your pieces.");
             }
+            if(playerColor != game.getTeamTurn()){
+                throw new DataAccessException("You can only move your pieces in your turn");
+            }
+            if(game.isResigned()){
+                throw new DataAccessException("You can't move if game is resigned");
+            }
             ChessMove move = command.getMove();
+            game.setTeamTurn(playerColor);
             game.makeMove(move);
             int gameID = gameData.gameID();
             GameData newGameData = new GameData(gameID, gameData.whiteUserName(), gameData.blackUserName(), gameData.gameName(), game);
@@ -189,11 +198,20 @@ public class WebsocketHandler {
         }
     }
 
-    public void leaveGame(Session session, String message) throws IOException {
+    public void leaveGame(Session session, String message) throws IOException, DataAccessException {
         var command = new Gson().fromJson(message, Leave.class);
         String authToken = command.getAuthString();
+        GameData gameData = service.getGame(command.getGameID());
+        String color = "";
         try {
             String username = service.getUsername(authToken);
+            if(Objects.equals(username, gameData.whiteUserName())){
+                color = "WHITE";
+            }else{
+                color = "BLACK";
+            }
+            LeaveGameRequest LeaveGameRequest = new LeaveGameRequest(color, gameData.gameID());
+            service.leaveGame(LeaveGameRequest, authToken);
             connections.remove(authToken);
             var notification = new Notification(username + " has left the game.");
             connections.notifyOthers(authToken, new Gson().toJson(notification), command.getGameID());

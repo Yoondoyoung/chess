@@ -137,13 +137,9 @@ public class ChessGame {
         board.addPiece(move.getEndPosition(), movedPiece);
         board.addPiece(move.getStartPosition(), null);
         lastMove = move;
-        System.out.println(
-                "Turn changed from : " + this.teamTurn + "\n"
-        );
+        System.out.println("Turn changed from : " + this.teamTurn);
         this.teamTurn = (this.teamTurn == TeamColor.WHITE) ? TeamColor.BLACK : TeamColor.WHITE;
-        System.out.println(
-                "Turn changed to : " + this.teamTurn + "\n"
-        );
+        System.out.println("Turn changed to : " + this.teamTurn);
     }
 
     public void applyMove(ChessBoard board, ChessMove move) {

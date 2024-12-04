@@ -2,10 +2,7 @@ package service;
 
 import chess.ChessGame;
 import dataaccess.*;
-import model.AuthData;
-import model.GameData;
-import model.JoinGameRequset;
-import model.UserData;
+import model.*;
 import model.result.GameResult;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -116,7 +113,20 @@ public class MyService {
             throw new DataAccessException("Error: Bad request");
         }
 
+    }
 
+    public void leaveGame(LeaveGameRequest leaveGameRequest, String authToken) throws Exception {
+        if(isValidAuth(authToken)){
+            if(Objects.equals(leaveGameRequest.playerColor(), "WHITE")){
+                gameDAO.leaveGame(leaveGameRequest.gameID(), "WHITE");
+            }else if(Objects.equals(leaveGameRequest.playerColor(), "BLACK")){
+                gameDAO.leaveGame(leaveGameRequest.gameID(), "BLACK");
+            }else{
+                throw new DataAccessException("Error: Bad request");
+            }
+        }else{
+            throw new DataAccessException("Error: Bad request");
+        }
     }
 
     public List<GameResult> listGames(String authToken) throws Exception{
