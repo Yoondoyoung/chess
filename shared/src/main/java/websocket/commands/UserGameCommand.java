@@ -40,9 +40,6 @@ public class UserGameCommand {
     }
 
     public CommandType getCommandType() {
-        if(this.commandType == ws){
-            return CONNECT;
-        }
         return commandType;
     }
 
