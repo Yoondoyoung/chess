@@ -143,7 +143,7 @@ public class WebsocketHandler {
                 throw new DataAccessException("You can only move your pieces.");
             }
             if(playerColor != game.getTeamTurn()){
-                throw new DataAccessException("You can only move your pieces in your turn");
+                throw new DataAccessException("It is " + game.getTeamTurn() + "'s Turn");
             }
             if(game.isResigned()){
                 throw new DataAccessException("You can't move if game is resigned");
@@ -235,7 +235,7 @@ public class WebsocketHandler {
     }
 
     public void error(String authToken, Exception exception) throws IOException {
-        var error = new ErrorMessage("Error: " + exception.toString());
+        var error = new ErrorMessage("Error: " + exception.getMessage());
         connections.notifyPlayer(authToken, new Gson().toJson(error));
     }
 

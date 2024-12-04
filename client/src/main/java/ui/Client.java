@@ -367,7 +367,7 @@ public class Client {
             return "Move failed.";
         }
 
-        return "Moved " + start + " to " + end;
+        return "Trying to move " + start + " to " + end;
     }
 
     private String highlightGameUI(){
@@ -409,8 +409,9 @@ public class Client {
     }
 
     private String resignGameUI() throws IOException {
-        this.state = State.SIGNEDIN;
+        this.state = State.INGAME;
         facade.resignGame(authToken, gameID);
+
         return "Resigned Game.";
     }
 
