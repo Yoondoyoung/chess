@@ -1,14 +1,14 @@
-package server;
+package passoff.server;
 
 import chess.ChessGame;
 import chess.ChessMove;
 import chess.ChessPosition;
 import org.junit.jupiter.api.*;
 import passoff.model.*;
-import passoff.server.TestServerFacade;
 import passoff.websocket.TestCommand;
 import passoff.websocket.TestMessage;
 import passoff.websocket.WebsocketTestingEnvironment;
+import server.Server;
 import websocket.commands.UserGameCommand;
 import websocket.messages.ServerMessage;
 
