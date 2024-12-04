@@ -62,7 +62,6 @@ public class Handler {
     }
 
     public Object login(Request req, Response res) throws DataAccessException {
-        System.out.println("Login called in Handler");
         UserData userData;
         String auth;
         // Parse request body to UserData and handle potential JSON errors
@@ -96,7 +95,6 @@ public class Handler {
             FailureResult response500 = new FailureResult("Error: description");
             return gson.toJson(response500);
         }
-
         try {
             service.logout(authToken);
         } catch (Exception e){
@@ -104,7 +102,6 @@ public class Handler {
             FailureResult response401 = new FailureResult("Error: unauthorized");
             return gson.toJson(response401);
         }
-
         res.status(200);
         return gson.toJson(new LogoutResult());
     }
@@ -121,13 +118,10 @@ public class Handler {
             FailureResult response500 = new FailureResult("Error: description");
             return gson.toJson(response500);
         }
-
-
         if(!service.isValidAuth(authToken)) {
             res.status(401); // Unauthorized if login fails
             return gson.toJson(new FailureResult("Error: unauthorized"));
         }
-
         try{
             gameID = (service.createGame(gameData.gameName()));
         } catch (Exception e) {
@@ -135,7 +129,6 @@ public class Handler {
             FailureResult response400 = new FailureResult("Error: missing or invalid fields");
             return gson.toJson(response400);
         }
-
         res.status(200);
         CreateGameResult createGameResult = new CreateGameResult(gameID);
         return gson.toJson(createGameResult);

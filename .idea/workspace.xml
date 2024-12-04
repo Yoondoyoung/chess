@@ -6,14 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="40362976-303f-48a0-9bb7-bd43d5c088bd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/ui/websocket/WebSocketFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/ui/websocket/WebSocketFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/Handler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/Handler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/websocket/WebsocketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/websocket/WebsocketHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/test/java/server/WebSocketTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/java/server/WebSocketTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/websocket/WebsocketHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/websocket/WebsocketHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/test-classes/server/WebSocketTests$WebsocketUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/test-classes/server/WebSocketTests$WebsocketUser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/test-classes/server/WebSocketTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/test-classes/server/WebSocketTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/src/main/java/websocket/commands/UserGameCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared/src/main/java/websocket/commands/UserGameCommand.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +107,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/yoon/Desktop/cs240/chess/client/src/test/java",
+    "last_opened_file_path": "/Users/yoon/Desktop/cs240/chess/server/src/test/java/passoff/server",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -134,11 +128,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/server/src/test/java/passoff/server" />
       <recent name="$PROJECT_DIR$/client/src/test/java" />
       <recent name="$PROJECT_DIR$/server/src/test/java" />
       <recent name="$PROJECT_DIR$/shared/src/test/java/passoff/chess" />
       <recent name="$PROJECT_DIR$/shared/src/main/java" />
-      <recent name="$PROJECT_DIR$/client/src/test/java/client" />
     </key>
   </component>
   <component name="RunManager">
@@ -240,7 +234,7 @@
       <workItem from="1732681029981" duration="1255000" />
       <workItem from="1732998177220" duration="4926000" />
       <workItem from="1733080926401" duration="1585000" />
-      <workItem from="1733082724991" duration="26952000" />
+      <workItem from="1733082724991" duration="27327000" />
     </task>
     <servers />
   </component>
@@ -262,7 +256,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/server/src/main/java/websocket/WebsocketHandler.java</url>
-          <line>239</line>
+          <line>237</line>
           <option name="timeStamp" value="62" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -289,11 +283,6 @@
           <url>file://$PROJECT_DIR$/server/src/test/java/server/WebSocketTests.java</url>
           <line>239</line>
           <option name="timeStamp" value="83" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/server/src/main/java/websocket/WebsocketHandler.java</url>
-          <line>34</line>
-          <option name="timeStamp" value="84" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/shared/src/main/java/websocket/commands/UserGameCommand.java</url>

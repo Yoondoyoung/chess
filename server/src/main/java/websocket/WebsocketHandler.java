@@ -30,7 +30,6 @@ public class WebsocketHandler {
 
     @OnWebSocketMessage
     public void onMessage(Session session, String message) throws DataAccessException, IOException {
-        System.out.println("onMessage Called in WebSocketHandler");
         var command = new Gson().fromJson(message, UserGameCommand.class);
         switch (command.getCommandType()) {
             case JOIN_PLAYER -> joinGamePlayer(session, message);
@@ -52,10 +51,9 @@ public class WebsocketHandler {
                     var notification = new Notification("Error: Invalid Game ID");
                     connections.connections.put(authToken, new Connection(authToken, session));
                     this.error(authToken, new Exception(notification.getMessage()));
-//                    connections.notifyPlayer(authToken, new Gson().toJson(notification)); // Notify the player
 
                     // Optionally, log the error or track it
-                    System.out.println("Invalid game ID: " + command.getGameID());
+                    // System.out.println("Invalid game ID: " + command.getGameID());
                 }else{
                     var notification = new Notification("Successfully Connected");
                     sendGame(gameData, session, authToken);
