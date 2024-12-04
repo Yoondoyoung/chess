@@ -122,8 +122,6 @@ public class ChessGame {
                 !validMoves(move.getStartPosition()).stream().anyMatch(moving -> moving.getEndPosition().equals(move.getEndPosition())) ||
                 this.board.getPiece(target).getTeamColor() != this.teamTurn)
         {
-            System.out.println(this.board.getPiece(target).getTeamColor());
-            System.out.println(this.teamTurn);
             throw new InvalidMoveException();
         }
 

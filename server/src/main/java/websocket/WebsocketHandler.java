@@ -136,17 +136,18 @@ public class WebsocketHandler {
             GameData gameData = service.getGame(command.getGameID());
             ChessGame game = gameData.game();
             ChessGame.TeamColor playerColor = service.checkUserColor(username, gameData);
+            game.setTeamTurn(playerColor);
             ChessGame.TeamColor pieceColor = game.getBoard().getPiece(command.getMove().startPos).getTeamColor();
             if (pieceColor != playerColor) {
                 throw new DataAccessException("You can only move your pieces.");
             }
             ChessMove move = command.getMove();
-//            game.setTeamTurn(playerColor);
             game.makeMove(move);
-
             int gameID = gameData.gameID();
+            GameData newGameData = new GameData(gameID, gameData.whiteUserName(), gameData.blackUserName(), gameData.gameName(), game);
             var gameString = new Gson().toJson(game);
-            service.setGame(gameData, playerColor.toString());
+            System.out.println("new Game : "+gameString);
+            service.setGame(newGameData, playerColor.toString());
 
             char startCol = (char)(move.startPos.col+96);
             char endCol = (char)(move.endPos.col+96);

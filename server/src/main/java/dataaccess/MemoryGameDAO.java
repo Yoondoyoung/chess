@@ -106,11 +106,16 @@ public class MemoryGameDAO implements GameDAO{
         } else {
             throw new DataAccessException("Bad color");
         }
+        String gameJson = new Gson().toJson(game.game());
         try (var conn = DatabaseManager.getConnection()) {
-            var statement = "UPDATE games SET " + blankUsername + " = ? WHERE gameID = ?";
+            var statement = "UPDATE games " +
+                    "SET " + blankUsername + " = ?, " +
+                        "game = ? " +
+                    "WHERE gameID = ?";
             try (var ps = conn.prepareStatement(statement)) {
                 ps.setString(1, username);
-                ps.setInt(2, game.gameID());
+                ps.setString(2, gameJson);
+                ps.setInt(3, game.gameID());
                 int rowsAffected = ps.executeUpdate();
             }
         } catch (Exception e) {
