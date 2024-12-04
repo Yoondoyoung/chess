@@ -2,6 +2,9 @@ package websocket.commands;
 
 import java.util.Objects;
 
+import static websocket.commands.UserGameCommand.CommandType.CONNECT;
+import static websocket.commands.UserGameCommand.CommandType.ws;
+
 /**
  * Represents a command a user can send the server over a websocket
  *
@@ -32,10 +35,14 @@ public class UserGameCommand {
         LEAVE,
         RESIGN,
         JOIN_OBSERVER,
-        JOIN_PLAYER
+        JOIN_PLAYER,
+        ws
     }
 
     public CommandType getCommandType() {
+        if(this.commandType == ws){
+            return CONNECT;
+        }
         return commandType;
     }
 

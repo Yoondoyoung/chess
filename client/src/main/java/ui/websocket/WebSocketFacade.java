@@ -24,6 +24,7 @@ public class WebSocketFacade extends Endpoint {
 
     public WebSocketFacade(String url, NotificationHandler notificationHandler) throws IOException {
         try {
+            System.out.println("WSF Called");
             url = url.replace("http", "ws");
             URI socketURI = new URI(url + "/connect");
             this.notificationHandler = notificationHandler;

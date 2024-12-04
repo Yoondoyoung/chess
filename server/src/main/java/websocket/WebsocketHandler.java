@@ -210,8 +210,8 @@ public class WebsocketHandler {
             }else{
                 color = "BLACK";
             }
-            LeaveGameRequest LeaveGameRequest = new LeaveGameRequest(color, gameData.gameID());
-            service.leaveGame(LeaveGameRequest, authToken);
+            LeaveGameRequest leaveGameRequest = new LeaveGameRequest(color, gameData.gameID());
+            service.leaveGame(leaveGameRequest, authToken);
             connections.remove(authToken);
             var notification = new Notification(username + " has left the game.");
             connections.notifyOthers(authToken, new Gson().toJson(notification), command.getGameID());
