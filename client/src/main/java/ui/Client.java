@@ -403,9 +403,14 @@ public class Client {
     }
 
     private String leaveGameUI() throws IOException {
-        this.state = State.SIGNEDIN;
-        facade.leaveGame(authToken, gameID);
-        return "Left Game";
+        if(this.state == State.OBSERVING){
+            this.state = State.SIGNEDIN;
+            return "Left Game";
+        }else{
+            this.state = State.SIGNEDIN;
+            facade.leaveGame(authToken, gameID);
+            return "Left Game";
+        }
     }
 
     private String resignGameUI() throws IOException {

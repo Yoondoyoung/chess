@@ -78,7 +78,7 @@ public class WebsocketHandler {
             String username = service.getUsername(authToken);
             ChessGame.TeamColor playerColor = command.getPlayerColor();
             GameData gameData = service.getGame(command.getGameID());
-            String playerString = "null";
+            String playerString = "none";
 
             if (playerColor == ChessGame.TeamColor.WHITE ){
                 playerString = "WHITE";
@@ -95,10 +95,11 @@ public class WebsocketHandler {
                     throw new Exception("You already joined as the black user.");
                 }
             }
+
             JoinGameRequset join = new JoinGameRequset(playerString, gameData.gameID());
             service.joinGame(join, authToken);
             sendGame(gameData, session, authToken);
-            var notification = new Notification(username + " has joined as the " + playerString + " player.");
+            var notification = new Notification(username + " has joined as a player.");
             connections.notifyOthers(authToken, new Gson().toJson(notification), gameData.gameID());
         } catch (Exception e) {
             error(authToken, e);
@@ -148,6 +149,12 @@ public class WebsocketHandler {
             if(game.isResigned()){
                 throw new DataAccessException("You can't move if game is resigned");
             }
+            if (game.isInCheckmate(ChessGame.TeamColor.WHITE) && game.getTeamTurn() == playerColor) {
+                throw new DataAccessException("You can't move when you are in checkmate");
+            }
+            if (game.isInCheckmate(ChessGame.TeamColor.BLACK) && game.getTeamTurn() == playerColor) {
+                throw new DataAccessException("You can't move when you are in checkmate");
+            }
             ChessMove move = command.getMove();
             game.setTeamTurn(playerColor);
             game.makeMove(move);
@@ -169,6 +176,7 @@ public class WebsocketHandler {
             connections.notifyOthers(authToken, new Gson().toJson(notification), gameData.gameID());
 
             boolean checkIfCheckmate = false;
+
             if (game.isInCheckmate(ChessGame.TeamColor.WHITE)) {
                 var checkMateWhite = new Notification("WHITE is in checkmate!");
                 connections.broadcast(new Gson().toJson(checkMateWhite), gameID);
