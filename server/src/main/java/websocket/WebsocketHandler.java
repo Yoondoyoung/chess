@@ -99,7 +99,7 @@ public class WebsocketHandler {
             JoinGameRequset join = new JoinGameRequset(playerString, gameData.gameID());
             service.joinGame(join, authToken);
             sendGame(gameData, session, authToken);
-            var notification = new Notification(username + " has joined as a player.");
+            var notification = new Notification(username + " has joined as a "+playerColor+" player.");
             connections.notifyOthers(authToken, new Gson().toJson(notification), gameData.gameID());
         } catch (Exception e) {
             error(authToken, e);
@@ -171,29 +171,29 @@ public class WebsocketHandler {
             connections.notifyOthers(authToken, new Gson().toJson(loadGame), gameID);
             sendGame(gameData, session, authToken);
             var notification = new Notification("A move has been made: " +
-                    startCol + (9-move.startPos.row) +
-                    " to " + endCol + (9-move.endPos.row) + ".");
+                    startCol + (move.startPos.row) +
+                    " to " + endCol + (move.endPos.row) + ".");
             connections.notifyOthers(authToken, new Gson().toJson(notification), gameData.gameID());
 
             boolean checkIfCheckmate = false;
 
             if (game.isInCheckmate(ChessGame.TeamColor.WHITE)) {
-                var checkMateWhite = new Notification("WHITE is in checkmate!");
+                var checkMateWhite = new Notification(gameData.whiteUserName()+" is in checkmate!");
                 connections.broadcast(new Gson().toJson(checkMateWhite), gameID);
                 checkIfCheckmate = true;
             }
             if (game.isInCheckmate(ChessGame.TeamColor.BLACK)) {
-                var checkMateBlack = new Notification("BLACK is in checkmate!");
+                var checkMateBlack = new Notification(gameData.blackUserName()+" is in checkmate!");
                 connections.broadcast(new Gson().toJson(checkMateBlack), gameID);
                 checkIfCheckmate = true;
             }
             if (!checkIfCheckmate) {
                 if (game.isInCheck(ChessGame.TeamColor.WHITE)) {
-                    var checkWhite = new Notification("WHITE is in check!");
+                    var checkWhite = new Notification(gameData.whiteUserName()+" is in check!");
                     connections.broadcast(new Gson().toJson(checkWhite), gameID);
                 }
                 if (game.isInCheck(ChessGame.TeamColor.BLACK)) {
-                    var checkBlack = new Notification("BLACK is in check!");
+                    var checkBlack = new Notification(gameData.blackUserName()+" is in check!");
                     connections.broadcast(new Gson().toJson(checkBlack), gameID);
                 }
             }
@@ -208,19 +208,28 @@ public class WebsocketHandler {
         var command = new Gson().fromJson(message, Leave.class);
         String authToken = command.getAuthString();
         GameData gameData = service.getGame(command.getGameID());
+
         String color = "";
         try {
             String username = service.getUsername(authToken);
             if(Objects.equals(username, gameData.whiteUserName())){
                 color = "WHITE";
-            }else{
+            }else if(Objects.equals(username, gameData.blackUserName())){
                 color = "BLACK";
+            }else{
+                color = "OBSERVER";
             }
-            LeaveGameRequest leaveGameRequest = new LeaveGameRequest(color, gameData.gameID());
-            service.leaveGame(leaveGameRequest, authToken);
-            connections.remove(authToken);
-            var notification = new Notification(username + " has left the game.");
-            connections.notifyOthers(authToken, new Gson().toJson(notification), command.getGameID());
+            if(color.equals("OBSERVER")){
+                connections.remove(authToken);
+                var notification = new Notification(username + " has left the game.");
+                connections.notifyOthers(authToken, new Gson().toJson(notification), command.getGameID());
+            }else{
+                LeaveGameRequest leaveGameRequest = new LeaveGameRequest(color, gameData.gameID());
+                service.leaveGame(leaveGameRequest, authToken);
+                connections.remove(authToken);
+                var notification = new Notification(username + " has left the game.");
+                connections.notifyOthers(authToken, new Gson().toJson(notification), command.getGameID());
+            }
         } catch (Exception e) {
             connections.connections.put(authToken, new Connection(authToken, session));
             error(authToken, e);
@@ -248,3 +257,4 @@ public class WebsocketHandler {
     }
 
 }
+

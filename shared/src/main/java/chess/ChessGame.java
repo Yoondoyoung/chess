@@ -85,7 +85,6 @@ public class ChessGame {
             for(ChessMove move : possibleMoves){
                 applyMove(clonedBoard, move);
                 if (!isInCheck(target.getTeamColor(), clonedBoard)) {
-                    System.out.println("validMove = "+move+ "Color = "+target.getTeamColor()+ "Type = "+target.getPieceType());
                     validMoves.add(move);
                 }
                 undoMove(clonedBoard, move);
@@ -116,7 +115,6 @@ public class ChessGame {
      */
     public void makeMove(ChessMove move) throws InvalidMoveException {
         ChessPosition target = new ChessPosition(move.getStartPosition().getRow(), move.getStartPosition().getColumn());
-        System.out.println("TARGET : "+this.board.getPiece(target));
         if(isInCheck(this.teamTurn) ||
                 this.board.getPiece(target) == null ||
                 !validMoves(move.getStartPosition()).stream().anyMatch(moving -> moving.getEndPosition().equals(move.getEndPosition())) ||
@@ -213,9 +211,6 @@ public class ChessGame {
                 }
             }
         }
-        for(ChessPosition po : positions){
-            System.out.println("GetAll : "+po);
-        }
         return positions;
     }
 
@@ -224,7 +219,6 @@ public class ChessGame {
         for(int i = 0; i < pieces.length; i++){
             for(int j = 0; j < pieces[i].length; j++){
                 if(pieces[i][j] != null && pieces[i][j].type == ChessPiece.PieceType.KING &&  pieces[i][j].getTeamColor() == color){
-                    System.out.println("King Position = " + new ChessPosition(i+1, j+1));
                     return new ChessPosition(i+1, j+1);
                 }
             }
@@ -251,8 +245,6 @@ public class ChessGame {
      */
     public boolean isInStalemate(TeamColor teamColor) {
 
-        System.out.println("Is in check = "+isInCheck(teamColor, this.board));
-        System.out.println("CanMoveOutofCheck = "+canMoveOutOfCheck(teamColor));
         if(!isInCheck(teamColor, this.board) && canMoveOutOfCheck(teamColor)){
             System.out.println(teamColor + " is in stalemate!");
         }

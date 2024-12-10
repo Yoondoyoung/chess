@@ -17,6 +17,7 @@ import static java.lang.Character.getNumericValue;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Objects;
 import java.util.Scanner;
 
 import static ui.EscapeSequences.*;
@@ -258,7 +259,7 @@ public class Client {
         this.state = State.INGAME;
         this.teamColor = playerColor;
         this.gameID = gameID;
-        return "Joined game as player.";
+        return username + " Joined game as " +playerColor+ " player.";
     }
 
     private String joinObserverUI() throws Exception {
@@ -279,7 +280,7 @@ public class Client {
         this.state = State.OBSERVING;
         this.teamColor = null;
         this.gameID = gameID;
-        return "Joined game as observer.";
+        return username + " Joined game as observer.";
     }
 
     private String listGamesUI() throws Exception {
@@ -317,10 +318,12 @@ public class Client {
         System.out.println("Please enter the start location (ex: a1): ");
         printPrompt();
         String start = scanner.nextLine();
+        validateInput(start); // Validate start input
         setUIColor();
         System.out.println("Please enter the end location (ex: b2): ");
         printPrompt();
         String end = scanner.nextLine();
+        validateInput(end); // Validate end input
 
         ChessPiece.PieceType promoType = ChessPiece.PieceType.KING;
         while (promoType == ChessPiece.PieceType.KING) {
@@ -332,15 +335,19 @@ public class Client {
 
             switch (typeInput.toUpperCase()) {
                 case "ROOK" -> {
+                    validatePromote(end);
                     promoType = ChessPiece.PieceType.ROOK;
                 }
                 case "BISHOP" -> {
+                    validatePromote(end);
                     promoType = ChessPiece.PieceType.BISHOP;
                 }
                 case "KNIGHT" -> {
+                    validatePromote(end);
                     promoType = ChessPiece.PieceType.KNIGHT;
                 }
                 case "QUEEN" -> {
+                    validatePromote(end);
                     promoType = ChessPiece.PieceType.QUEEN;
                 }
                 case "NONE" -> {
@@ -352,6 +359,7 @@ public class Client {
                 }
             }
         }
+
         int startRow = getNumericValue(start.charAt(1));
         int startCol = (getNumericValue(start.charAt(0))-9);
         int endRow = getNumericValue(end.charAt(1));
@@ -368,6 +376,31 @@ public class Client {
         }
 
         return "Trying to move " + start + " to " + end;
+    }
+
+    // Method to validate user input
+    private void validateInput(String input) {
+        if (input.length() != 2) {
+            throw new IllegalArgumentException("Invalid input length. Please use format like 'a1'.");
+        }
+        char column = input.charAt(0);
+        char row = input.charAt(1);
+
+        if (column < 'a' || column > 'h') {
+            throw new IllegalArgumentException("Column out of range. Please use columns between 'a' and 'h'. Ex)'a1' ~ h8' ");
+        }
+        if (row < '1' || row > '8') {
+            throw new IllegalArgumentException("Row out of range. Please use rows between '1' and '8'. Ex)'a1' ~ h8'");
+        }
+    }
+
+    private void validatePromote(String input) {
+        char row = input.charAt(1);
+        if(row == 1 || row == 8){
+            return;
+        }else{
+            throw new IllegalArgumentException("You only can promote in the last row.");
+        }
     }
 
     private String highlightGameUI(){
@@ -403,21 +436,27 @@ public class Client {
     }
 
     private String leaveGameUI() throws IOException {
-        if(this.state == State.OBSERVING){
-            this.state = State.SIGNEDIN;
-            return "Left Game";
-        }else{
-            this.state = State.SIGNEDIN;
-            facade.leaveGame(authToken, gameID);
-            return "Left Game";
-        }
+        this.state = State.SIGNEDIN;
+        facade.leaveGame(authToken, gameID);
+        return "Left Game";
     }
 
     private String resignGameUI() throws IOException {
-        this.state = State.INGAME;
-        facade.resignGame(authToken, gameID);
+        setUIColor();
+        System.out.println("Are you sure?");
+        printPrompt();
+        String answer = scanner.nextLine();
 
-        return "Resigned Game.";
+        if(Objects.equals(answer.toLowerCase(), "yes")){
+            this.state = State.INGAME;
+            facade.resignGame(authToken, gameID);
+            return "Resigned Game.";
+        } else if (Objects.equals(answer.toLowerCase(), "no")) {
+            this.state = State.INGAME;
+            return "Canceled Resigning";
+        }
+        this.state = State.INGAME;
+        return "Type 'YES' or 'No'";
     }
 
     public void setBoard(ChessGame game){
